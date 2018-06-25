@@ -9,7 +9,7 @@ dir=${pwd}
 brew update
 brew upgrade
 
-brew bundle --file=$dir/Brewfile
+brew bundle --file=${$dir}/Brewfile
 
 brew cleanup
 brew cask cleanup
