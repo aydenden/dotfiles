@@ -5,4 +5,5 @@ brew:
 	source $(DOTFILES_DIR)/brew.sh
 
 docker:
+	chmod +x $(DOTFILES_DIR)/docker.sh
 	source $(DOTFILES_DIR)/docker.sh
