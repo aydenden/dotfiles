@@ -1,6 +1,5 @@
 #tap
 tap "homebrew/core"
-tap "homebrew/bundle"
 tap "homebrew/services"
 tap "homebrew/dupes"
 tap "homebrew/cask"
