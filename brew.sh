@@ -9,32 +9,38 @@ brew upgrade
 
 #tap
 tap "homebrew/core"
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "homebrew/dupes"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
-tap "homebrew/dupes"
-tap "homebrew/bundle"
-tap "homebrew/services"
 
-#brew
-brew "cask"
-
-#git
+#vcs
 brew "git"
+brew "subversion"
 
 #node
 brew "nvm"
 
-#zsh
-brew "zsh"
+#editor
+cask 'visual-studio-code'
+
+#ide
+cask 'intellij-idea'
 
 #font
 cask "homebrew/cask-fonts/font-d2coding"
 
 #util
+brew "zsh"
 cask "zazu"
+cask 'iterm2'
+cask 'google-chrome'
+cask 'firefox'
 
-#appstore
+#appstore util
+brew "mas"
 mas "Irvue", id: 1039633667
 mas "Monosnap", id: 540348655
 mas "Keynote", id: 409183694
