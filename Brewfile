@@ -27,6 +27,7 @@ cask "zazu"
 cask 'iterm2'
 cask 'google-chrome'
 cask 'firefox'
+cask 'slack'
 
 #appstore util
 brew "mas"
