@@ -9,3 +9,6 @@ brew:
 docker:
 	chmod +x $(DOTFILES_DIR)/docker.sh
 	$(DOTFILES_DIR)/docker.sh
+
+backup:
+	mackup restore
