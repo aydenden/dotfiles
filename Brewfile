@@ -23,6 +23,7 @@ cask "homebrew/cask-fonts/font-d2coding"
 
 #util
 brew "zsh"
+brew "mackup"
 cask "zazu"
 cask 'iterm2'
 cask 'google-chrome'
