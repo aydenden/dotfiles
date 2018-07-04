@@ -10,5 +10,6 @@ docker:
 	chmod +x $(DOTFILES_DIR)/docker.sh
 	$(DOTFILES_DIR)/docker.sh
 
-backup:
-	mackup restore
+zsh:
+	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
