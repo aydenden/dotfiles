@@ -5,6 +5,9 @@ fi
 
 DOTFILES_DIR=$(pwd)
 
+# Ask for the administrator password upfront
+sudo -v
+
 # Update, upgrade
 brew update
 brew upgrade
