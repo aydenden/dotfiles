@@ -11,6 +11,4 @@ docker:
 	$(DOTFILES_DIR)/docker.sh
 
 zsh:
-	wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-	chmod +x $(DOTFILES_DIR)/install.sh
-	$(DOTFILES_DIR)/install.sh
+	$(DOTFILES_DIR)/zsh.sh

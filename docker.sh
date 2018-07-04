@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # https://pilsniak.com/how-to-install-docker-on-mac-os-using-brew/
 brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
 
