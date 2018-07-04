@@ -13,10 +13,10 @@ brew "subversion"
 brew "nvm"
 
 #editor
-cask 'visual-studio-code'
+#cask 'visual-studio-code'
 
 #ide
-cask 'intellij-idea'
+#cask 'intellij-idea'
 
 #font
 cask "homebrew/cask-fonts/font-d2coding"
@@ -28,8 +28,8 @@ brew "mackup"
 cask "dropbox"
 cask "zazu"
 cask 'iterm2'
-cask 'google-chrome'
-cask 'firefox'
+#cask 'google-chrome'
+#cask 'firefox'
 cask 'slack'
 
 #appstore util
