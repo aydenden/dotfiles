@@ -9,7 +9,7 @@ DOTFILES_DIR=$(pwd)
 brew update
 brew upgrade
 
-sudo brew bundle --file=${DOTFILES_DIR}/Brewfile
+brew bundle --file=${DOTFILES_DIR}/Brewfile
 
 brew cleanup
 brew cask cleanup
