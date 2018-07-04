@@ -22,6 +22,7 @@ cask 'intellij-idea'
 cask "homebrew/cask-fonts/font-d2coding"
 
 #util
+brew "wget"
 brew "zsh"
 brew "mackup"
 cask "dropbox"
