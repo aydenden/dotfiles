@@ -11,5 +11,5 @@ docker:
 	$(DOTFILES_DIR)/docker.sh
 
 zsh:
-	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+	wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 
