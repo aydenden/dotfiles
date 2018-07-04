@@ -5,14 +5,11 @@ fi
 
 DOTFILES_DIR=$(pwd)
 
-# Ask for the administrator password upfront
-sudo -v
-
 # Update, upgrade
 brew update
 brew upgrade
 
-brew bundle --file=${DOTFILES_DIR}/Brewfile
+sudo brew bundle --file=${DOTFILES_DIR}/Brewfile
 
 brew cleanup
 brew cask cleanup
