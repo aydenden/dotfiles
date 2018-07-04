@@ -11,4 +11,5 @@ docker:
 	$(DOTFILES_DIR)/docker.sh
 
 zsh:
+	chmod +x $(DOTFILES_DIR)/zsh.sh
 	$(DOTFILES_DIR)/zsh.sh
