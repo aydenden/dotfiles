@@ -6,35 +6,35 @@ tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
 
 #vcs
-#brew "git"
-#brew "subversion"
+brew "git"
+brew "subversion"
 
 #node
-#brew "nvm"
+brew "nvm"
 
 #editor
-#cask 'visual-studio-code'
+cask 'visual-studio-code'
 
 #ide
-#cask 'intellij-idea'
+cask 'intellij-idea'
 
 #font
-#cask "homebrew/cask-fonts/font-d2coding"
+cask "homebrew/cask-fonts/font-d2coding"
 
 #util
-#brew "wget"
-#brew "mackup"
-#cask "dropbox"
-#cask "zazu"
-#cask 'iterm2'
-##cask 'google-chrome'
-##cask 'firefox'
-#cask 'slack'
+brew "wget"
+brew "mackup"
+cask "dropbox"
+cask "zazu"
+cask 'iterm2'
+cask 'google-chrome'
+cask 'firefox'
+cask 'slack'
 
 #appstore util
-#brew "mas"
-#mas "Irvue", id: 1039633667
-#mas "Monosnap", id: 540348655
-#mas "Trello", id: 1278508951
-#mas "Wunderlist", id: 410628904
-#mas "KakaoTalk", id: 869223134
+brew "mas"
+mas "Irvue", id: 1039633667
+mas "Monosnap", id: 540348655
+mas "Trello", id: 1278508951
+mas "Wunderlist", id: 410628904
+mas "KakaoTalk", id: 869223134
