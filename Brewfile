@@ -32,6 +32,7 @@ cask 'firefox'
 cask 'slack'
 cask 'vagrant'
 cask 'virtualbox'
+cask 'spectacle'
 
 #appstore util
 brew "mas"
