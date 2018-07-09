@@ -1,6 +1,6 @@
 DOTFILES_DIR := $(shell pwd)
 
-all: brew zsh
+all: brew docker
 
 brew:
 	chmod +x $(DOTFILES_DIR)/brew.sh
