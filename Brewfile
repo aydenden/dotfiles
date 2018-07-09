@@ -30,6 +30,8 @@ cask 'iterm2'
 cask 'google-chrome'
 cask 'firefox'
 cask 'slack'
+cask 'vagrant'
+cask 'virtualbox'
 
 #appstore util
 brew "mas"
