@@ -13,3 +13,7 @@ docker:
 zsh:
 	chmod +x $(DOTFILES_DIR)/zsh.sh
 	$(DOTFILES_DIR)/zsh.sh
+
+npm:
+	chmod +x $(DOTFILES_DIR)/npm.sh
+	$(DOTFILES_DIR)/npm.sh
