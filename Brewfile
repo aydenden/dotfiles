@@ -33,6 +33,8 @@ cask 'slack'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'spectacle'
+cask 'bettertouchtool'
+cask 'karabiner-elements'
 
 #appstore util
 brew "mas"
