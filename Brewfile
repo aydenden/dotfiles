@@ -9,9 +9,6 @@ tap "homebrew/cask-fonts"
 brew "git"
 brew "subversion"
 
-#node
-brew "nvm"
-
 #editor
 cask 'visual-studio-code'
 
