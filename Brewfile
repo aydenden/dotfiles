@@ -32,6 +32,7 @@ cask 'virtualbox'
 cask 'spectacle'
 cask 'bettertouchtool'
 cask 'karabiner-elements'
+cask 'mark-text'
 
 #appstore util
 brew "mas"
