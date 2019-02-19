@@ -10,6 +10,10 @@ nvm install stable
 # use lts to be safe for new
 nvm use lts/carbon
 
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
+
 npm install -g \
     json-server \
-    @vue/cli
+    @vue/cli \
+    vuepress

@@ -7,7 +7,6 @@ tap "homebrew/cask-fonts"
 
 #vcs
 brew "git"
-brew "subversion"
 
 #editor
 cask 'visual-studio-code'
