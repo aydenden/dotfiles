@@ -5,10 +5,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # install node
-nvm install lts/carbon
+nvm install --lts
 nvm install stable
 # use lts to be safe for new
-nvm use lts/carbon
+nvm use --lts
 
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh
