@@ -1,0 +1,22 @@
+{
+  "hotkey": "cmd+alt+space",
+  "theme": "tinytacoteam/zazu-light-theme",
+  "displayOn": "detect",
+  "plugins": [
+    "tinytacoteam/zazu-calculator",
+    "tinytacoteam/zazu-file-finder",
+    "tinytacoteam/zazu-template",
+    "tinytacoteam/zazu-system",
+    "tinytacoteam/zazu-package-manager",
+    {
+      "name": "tinytacoteam/zazu-fallback",
+      "variables": {
+        "rootSearches": [
+          "google"
+        ]
+      }
+    },
+    "tinytacoteam/zazu-chrome-bookmarks",
+    "danielbayerlein/zazu-devdocs"
+  ]
+}

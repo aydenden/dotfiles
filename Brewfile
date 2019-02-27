@@ -19,8 +19,6 @@ cask "homebrew/cask-fonts/font-d2coding"
 
 #util
 brew "wget"
-brew "mackup"
-cask "dropbox"
 cask "zazu"
 cask 'iterm2'
 cask 'google-chrome'
@@ -31,12 +29,8 @@ cask 'virtualbox'
 cask 'spectacle'
 cask 'bettertouchtool'
 cask 'karabiner-elements'
-cask 'mark-text'
 
 #appstore util
 brew "mas"
-mas "Irvue", id: 1039633667
-mas "Monosnap", id: 540348655
-mas "Trello", id: 1278508951
 mas "Wunderlist", id: 410628904
 mas "KakaoTalk", id: 869223134
