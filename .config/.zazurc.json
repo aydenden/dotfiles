@@ -4,7 +4,23 @@
   "displayOn": "detect",
   "plugins": [
     "tinytacoteam/zazu-calculator",
-    "tinytacoteam/zazu-file-finder",
+    {
+      "name": "tinytacoteam/zazu-file-finder",
+      "variables": {
+        "append": true,
+        "directories": {
+          "filePath": [
+            "~"
+          ],
+          "excludeName": [
+            "node_modules"
+          ],
+          "excludePath": [
+            "~/Library"
+          ]
+        }
+      }
+    },
     "tinytacoteam/zazu-template",
     "tinytacoteam/zazu-system",
     "tinytacoteam/zazu-package-manager",
@@ -13,7 +29,19 @@
       "variables": {
         "rootSearches": [
           "google"
-        ]
+        ],
+        "prefixSearches": {
+          "endic": {
+            "icon": "fa-book",
+            "name": "네이버 영어 사전",
+            "url": "https://endic.naver.com/search.nhn?query="
+          },
+          "caniuse": {
+            "icon": "fa-check",
+            "name": "Can I use",
+            "url": "https://caniuse.com/#search="
+          }
+        }
       }
     },
     "tinytacoteam/zazu-chrome-bookmarks",
