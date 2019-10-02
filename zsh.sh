@@ -7,4 +7,4 @@ chsh -s `which zsh`
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 rm -rf ~/.zshrc
-ln -s ~/dotfiles/.config/.zshrc ~/
+ln -s ~/.config/.zshrc ~/
