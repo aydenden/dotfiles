@@ -1,10 +1,14 @@
 DOTFILES_DIR := $(shell pwd)
 
-all: brew zsh npm docker 
+all: brew zsh npm docker util
 
 brew:
 	chmod +x $(DOTFILES_DIR)/brew.sh
 	$(DOTFILES_DIR)/brew.sh
+
+npm:
+	chmod +x $(DOTFILES_DIR)/npm.sh
+	$(DOTFILES_DIR)/npm.sh
 
 docker:
 	chmod +x $(DOTFILES_DIR)/docker.sh

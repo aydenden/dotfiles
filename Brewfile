@@ -16,6 +16,7 @@ cask 'intellij-idea'
 
 #font
 cask "homebrew/cask-fonts/font-d2coding"
+cask "homebrew/cask-fonts/font-meslo-for-powerline
 
 #util
 brew "wget"
