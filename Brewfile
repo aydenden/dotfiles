@@ -6,32 +6,32 @@ tap "homebrew/cask-versions"
 tap "homebrew/cask-fonts"
 
 #vcs
-brew "git"
+install "git"
 
 #editor
-cask "visual-studio-code"
+cask install "visual-studio-code"
 
 #ide
-cask "intellij-idea"
+cask install "intellij-idea"
 
 #font
-cask "homebrew/cask-fonts/font-d2coding"
-cask "homebrew/cask-fonts/font-meslo-for-powerline
+cask install "homebrew/cask-fonts/font-d2coding"
+cask install "homebrew/cask-fonts/font-meslo-for-powerline
 
 #util
-brew "wget"
-cask "zazu"
-cask "iterm2"
-cask "google-chrome"
-cask "firefox"
-cask "slack"
-cask "vagrant"
-cask "virtualbox"
-cask "spectacle"
-cask "bettertouchtool"
-cask "karabiner-elements"
+install "wget"
+cask install "zazu"
+cask install "iterm2"
+cask install "google-chrome"
+cask install "firefox"
+cask install "slack"
+cask install "vagrant"
+cask install "virtualbox"
+cask install "spectacle"
+cask install "bettertouchtool"
+cask install "karabiner-elements"
 
 #appstore util
-brew "mas"
+install "mas"
 mas "Wunderlist", id: 410628904
 mas "KakaoTalk", id: 869223134
