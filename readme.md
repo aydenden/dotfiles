@@ -8,6 +8,8 @@
 * xcode 설치 필요
 * brew mas로 AppStore 어플을 설치하기 때문에 AppStore 로그인 필요
 
+기타 설치 프로그램
+* [scrollreverser](https://pilotmoon.com/scrollreverser/)
 
 참고 페이지, 사이트
 * [https://dotfiles.github.io/](https://dotfiles.github.io/)
