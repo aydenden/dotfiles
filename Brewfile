@@ -1,37 +1,30 @@
-#tap
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/cask"
-tap "homebrew/cask-versions"
-tap "homebrew/cask-fonts"
-
-#vcs
+tap "sambadevi/powerlevel9k"
+brew "chrome-cli"
 brew "git"
-
-#editor
-cask "visual-studio-code"
-
-#ide
-cask "intellij-idea"
-
-#font
-cask "homebrew/cask-fonts/font-d2coding"
-cask "homebrew/cask-fonts/font-meslo-for-powerline
-
-#util
-brew "wget"
-cask "zazu"
-cask "iterm2"
-cask "google-chrome"
-cask "firefox"
-cask "slack"
-cask "vagrant"
-cask "virtualbox"
-cask "spectacle"
-cask "bettertouchtool"
-cask "karabiner-elements"
-
-#appstore util
 brew "mas"
+brew "wget"
+brew "zsh"
+brew "zsh-syntax-highlighting"
+brew "sambadevi/powerlevel9k/powerlevel9k@0.6.7"
+cask "bettertouchtool"
+cask "db-browser-for-sqlite"
+cask "firefox"
+cask "font-d2coding"
+cask "intellij-idea"
+cask "iterm2"
+cask "karabiner-elements"
+cask "slack"
+cask "spectacle"
+cask "vagrant"
+cask "visual-studio-code"
+cask "zazu"
+mas "genie", id: 1445501415
+mas "Microsoft To Do", id: 1274495053
 mas "Wunderlist", id: 410628904
-mas "KakaoTalk", id: 869223134
+mas "카카오톡", id: 869223134
