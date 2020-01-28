@@ -40,6 +40,11 @@
             "icon": "fa-check",
             "name": "Can I use",
             "url": "https://caniuse.com/#search="
+          },
+          "stack": {
+            "icon": "fa-check",
+            "name": "stackoverflow",
+            "url": "https://stackoverflow.com/search?q="
           }
         }
       }
