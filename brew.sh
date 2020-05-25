@@ -14,4 +14,3 @@ brew upgrade
 brew bundle --file=${DOTFILES_DIR}/Brewfile
 
 brew cleanup
-brew cask cleanup
