@@ -15,6 +15,8 @@ local function toggleApplication(name)
     end
 end
 
-hs.hotkey.bind(mash, "c", function() toggleApplication("Google Chrome") end)
-hs.hotkey.bind(mash, "i", function() toggleApplication("IntelliJ IDEA") end)
-hs.hotkey.bind(mash, "t", function() toggleApplication("iTerm") end)
+-- 프로그램 별 매핑 단축키
+hs.hotkey.bind({'ctrl', 'shift'}, "c", function() toggleApplication("Google Chrome") end)
+hs.hotkey.bind({'ctrl', 'shift'}, "i", function() toggleApplication("IntelliJ IDEA") end)
+hs.hotkey.bind({'ctrl', 'shift'}, "t", function() toggleApplication("iTerm") end)
+hs.hotkey.bind({'ctrl', 'shift'}, "v", function() toggleApplication("Visual Studio Code") end)
