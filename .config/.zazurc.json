@@ -36,15 +36,20 @@
             "name": "네이버 영어 사전",
             "url": "https://endic.naver.com/search.nhn?query="
           },
-          "caniuse": {
+          "ciu": {
             "icon": "fa-check",
             "name": "Can I use",
             "url": "https://caniuse.com/#search="
           },
-          "stack": {
+          "sof": {
             "icon": "fa-check",
             "name": "stackoverflow",
             "url": "https://stackoverflow.com/search?q="
+          },
+          "dh": {
+            "icon": "fa-check",
+            "name": "docker hub",
+            "url": "https://hub.docker.com/search?type=image&q="
           }
         }
       }
