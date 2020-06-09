@@ -50,6 +50,11 @@
             "icon": "fa-check",
             "name": "docker hub",
             "url": "https://hub.docker.com/search?type=image&q="
+          },
+          "mr": {
+            "icon": "fa-book",
+            "name": "미스터 블루 작품 검색",
+            "url": "https://www.mrblue.com/search?keyword="
           }
         }
       }
