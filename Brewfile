@@ -5,26 +5,29 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "sambadevi/powerlevel9k"
+brew "cask"
 brew "chrome-cli"
+brew "deno"
 brew "git"
+brew "go"
+brew "jq"
 brew "mas"
+brew "plantuml"
+brew "tree"
 brew "wget"
 brew "zsh"
 brew "zsh-syntax-highlighting"
 brew "sambadevi/powerlevel9k/powerlevel9k@0.6.7"
-cask "bettertouchtool"
-cask "db-browser-for-sqlite"
+cask "adoptopenjdk"
+cask "chromium"
+cask "ferdi"
 cask "firefox"
 cask "font-d2coding"
-cask "intellij-idea"
+cask "hammerspoon"
 cask "iterm2"
-cask "karabiner-elements"
-cask "slack"
-cask "spectacle"
-cask "vagrant"
 cask "visual-studio-code"
-cask "zazu"
-mas "genie", id: 1445501415
-mas "Microsoft To Do", id: 1274495053
-mas "Wunderlist", id: 410628904
+mas "Checkor", id: 1238750814
+mas "Magnet", id: 441258766
+mas "RunCat", id: 1429033973
+mas "Xcode", id: 497799835
 mas "카카오톡", id: 869223134
