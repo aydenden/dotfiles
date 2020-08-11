@@ -25,6 +25,10 @@ function enable_show()
         local box = newBox()
         draw_rectangle(box, frame.x, frame.y, frame.w, box_height, GREEN)
         table.insert(boxes, box)
+
+        local box2 = newBox()
+        draw_rectangle(box2, frame.x, frame.y + frame.h - 10, frame.w, box_height, GREEN)
+        table.insert(boxes, box2)
     end)
 end
 
