@@ -71,12 +71,12 @@
       # ranger                  # ranger shell (https://github.com/ranger/ranger)
       # vpn_ip                # virtual private network indicator
       time                    # current time
-      ram                   # free RAM
-      load                  # CPU load
-      battery               # internal battery
+      # ram                   # free RAM
+      # load                  # CPU load
+      public_ip             # public IP address
       # =========================[ Line #2 ]=========================
       newline
-      public_ip             # public IP address
+      battery               # internal battery
       # proxy                 # system-wide http/https/ftp proxy
       # example               # example user-defined segment (see prompt_example function below)
   )
@@ -565,7 +565,7 @@
   # Node version color.
   typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=70
   # Show node version only when in a directory tree containing package.json.
-  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=false
+  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
   # Custom icon.
 #   typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION=⬢
 
