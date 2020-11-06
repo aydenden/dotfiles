@@ -6,6 +6,7 @@ https://github.com/johngrib/hammerspoon-config/blob/master/modules/inputsource_a
 local boxes = {}
 local inputEnglish = "com.apple.keylayout.ABC"
 local box_height = 23
+local box_width = 10
 local box_alpha = 0.35
 local GREEN = hs.drawing.color.osx_green
 
@@ -23,12 +24,20 @@ function enable_show()
         local frame = scr:fullFrame()
 
         local box = newBox()
-        draw_rectangle(box, frame.x, frame.y, frame.w, box_height, GREEN)
+        draw_rectangle(box, frame.x, frame.y, frame.w, box_height, GREEN, alpha)
         table.insert(boxes, box)
 
         local box2 = newBox()
-        draw_rectangle(box2, frame.x, frame.y + frame.h - 10, frame.w, box_height, GREEN)
+        draw_rectangle(box2, frame.x, frame.h - (box_height / 2) , frame.w, (box_height / 2), GREEN)
         table.insert(boxes, box2)
+
+        local box3 = newBox()
+        draw_rectangle(box3, frame.x, frame.y + box_height, box_width, frame.h - (box_height + (box_height / 2)), GREEN)
+        table.insert(boxes, box3)
+
+        local box4 = newBox()
+        draw_rectangle(box4, frame.x + frame.w - (box_width), frame.y + box_height, box_width, frame.h - (box_height + (box_height / 2)), GREEN)
+        table.insert(boxes, box4)
     end)
 end
 
