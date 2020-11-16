@@ -8,3 +8,8 @@ fi
 rm -rf ~/.hammerspoon
 ln -s ~/dotfiles/.config/.hammerspoon ~/
 
+
+# .finicky.js
+rm -rf ~/.finicky.js
+ln -s ~/dotfiles/.config/.finicky.js ~/
+
