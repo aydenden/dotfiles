@@ -1,10 +1,11 @@
 module.exports = {
-    defaultBrowser: "Google Chrome Canary",
+    defaultBrowser: "Google Chrome",
     handlers: [
         {
-            // Open apple.com and example.org urls in Safari
-            match: ["sentry.io*", "wiki.mrblue.com*", "jira.mrblue.com*", "gw.mrblue.com*"],
-            browser: "Google Chrome"
+            match: [""],
+            browser: "Google Chrome",
+            // ~/Library/Application Support/Google/Chrome/{Default/Profile 2/....}
+            profile: "Profile 2",
         }
     ]
 };
