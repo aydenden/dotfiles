@@ -11,3 +11,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvmsource ~/powerlevel10k/powerlevel10k.zsh-theme
+
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
