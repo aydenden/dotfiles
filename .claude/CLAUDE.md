@@ -6,3 +6,6 @@
 
 ## 코딩 규칙 (절대 준수)
 @/Users/ndot/.claude/coding-rules.md 의 모든 규칙을 반드시 따르시오.
+
+## 서브 에이전트 모델
+- Task tool: 검색/탐색/목록 작업 → **Haiku** 사용
