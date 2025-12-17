@@ -1,28 +1,27 @@
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "sambadevi/powerlevel9k"
-brew "cask"
-brew "deno"
-brew "nvm"
+# =============================================================================
+# Brewfile - Homebrew 패키지 목록
+# =============================================================================
+
+# CLI Tools
 brew "git"
-brew "mas"
 brew "tree"
 brew "wget"
+brew "mas"
+brew "deno"
+brew "nvm"
+
+# Shell
 brew "zsh"
 brew "zsh-syntax-highlighting"
-brew "sambadevi/powerlevel9k/powerlevel9k@0.6.7"
-cask "fig"
-cask "finicky"
-cask "font-d2coding"
+
+# Cask - 개발 도구
 cask "iterm2"
-cask "jetbrains-toolbox"
 cask "visual-studio-code"
-mas "Checkor", id: 1238750814
-mas "Magnet", id: 441258766
-mas "RunCat", id: 1429033973
-mas "Xcode", id: 497799835
-mas "카카오톡", id: 869223134
+cask "jetbrains-toolbox"
+cask "orbstack"
+
+# Cask - 유틸리티
+cask "finicky"
+
+# Cask - 폰트
+cask "font-d2coding"
