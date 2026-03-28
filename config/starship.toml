@@ -1,161 +1,83 @@
-# Starship prompt — Powerlevel10k 스타일
+"$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](fg:blue)\
-$os\
+[░▒▓](#a3aed2)\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
 $directory\
-[](fg:blue bg:green)\
+[](fg:#769ff0 bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:green bg:yellow)\
+[](fg:#394260 bg:#212736)\
 $nodejs\
 $python\
 $rust\
 $golang\
 $deno\
-[](fg:yellow bg:purple)\
-$docker_context\
-[](fg:purple bg:red)\
+[](fg:#212736 bg:#1d2230)\
 $cmd_duration\
-[](fg:red)\
-$fill\
 $time\
-$line_break\
-$character"""
-
-[os]
-format = "[ ](bg:blue fg:white)"
-disabled = false
-
-[os.symbols]
-Macos = ""
-Linux = ""
-Windows = "󰍲 "
+[ ](fg:#1d2230)\
+\n$character"""
 
 [directory]
+style = "fg:#e3e5e5 bg:#769ff0"
 format = "[ $path ]($style)"
-style = "bg:blue fg:white bold"
 truncation_length = 3
-truncate_to_repo = true
+truncation_symbol = "…/"
 read_only = " 󰌾"
 
 [directory.substitutions]
-"Documents" = "󰈙"
-"Downloads" = ""
-"dotfiles" = ""
-"dev" = ""
+"Documents" = "󰈙 "
+"Downloads" = " "
+"dotfiles" = " "
+"dev" = " "
 
 [git_branch]
-format = "[ $symbol$branch ]($style)"
-style = "bg:green fg:black"
-symbol = " "
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-format = "[$all_status$ahead_behind]($style)"
-style = "bg:green fg:black"
-ahead = "⇡${count}"
-behind = "⇣${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-modified = "✘"
-staged = "✚"
-untracked = "?"
-stashed = "≡"
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
 [nodejs]
-format = "[ $symbol$version ]($style)"
-style = "bg:yellow fg:black"
-symbol = " "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [python]
-format = "[ $symbol$version ]($style)"
-style = "bg:yellow fg:black"
-symbol = " "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
-format = "[ $symbol$version ]($style)"
-style = "bg:yellow fg:black"
-symbol = " "
+symbol = "󱘗"
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [golang]
-format = "[ $symbol$version ]($style)"
-style = "bg:yellow fg:black"
-symbol = " "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [deno]
-format = "[ $symbol$version ]($style)"
-style = "bg:yellow fg:black"
-symbol = " "
-
-[docker_context]
-format = "[ $symbol$context ]($style)"
-style = "bg:purple fg:white"
-symbol = " "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [cmd_duration]
 min_time = 2_000
-format = "[ 󰔟 $duration ]($style)"
-style = "bg:red fg:white"
-
-[fill]
-symbol = " "
+style = "bg:#1d2230"
+format = '[[ 󰔟 $duration ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [time]
 disabled = false
-format = "[ $time ](fg:bright-black)"
-time_format = "%H:%M"
-
-[line_break]
-disabled = false
+time_format = "%R"
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [character]
-success_symbol = "[❯](bold green)"
+success_symbol = "[❯](bold #769ff0)"
 error_symbol = "[❯](bold red)"
-
-# --- Nerd Font Symbols (프리셋) ---
-[aws]
-symbol = " "
-
-[bun]
-symbol = " "
-
-[c]
-symbol = " "
-
-[cmake]
-symbol = " "
-
-[git_commit]
-tag_symbol = "  "
-
-[hostname]
-ssh_symbol = " "
-
-[java]
-symbol = " "
-
-[kotlin]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[memory_usage]
-symbol = "󰍛 "
-
-[package]
-symbol = "󰏗 "
-
-[php]
-symbol = " "
-
-[ruby]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[swift]
-symbol = " "
-
-[zig]
-symbol = " "
