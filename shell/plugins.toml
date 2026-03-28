@@ -11,10 +11,6 @@ use = ["completion.zsh", "directories.zsh", "history.zsh", "key-bindings.zsh"]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins/git"
 
-[plugins.oh-my-zsh-docker]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins/docker"
-
 # --- 커뮤니티 플러그인 ---
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
