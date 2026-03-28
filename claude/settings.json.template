@@ -1,0 +1,32 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y @owloops/claude-powerline@latest --style=powerline"
+  },
+  "alwaysThinkingEnabled": true,
+  "mcpServers": {
+    "serena": {
+      "command": "uvx",
+      "args": ["--from", "serena-mcp", "serena"],
+      "env": {}
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Bash"
+    ],
+    "deny": [
+      "Read(**/*.env)",
+      "Read(**/credentials.json)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Write(**/*.env)",
+      "Write(**/credentials.json)"
+    ]
+  },
+  "env": {}
+}

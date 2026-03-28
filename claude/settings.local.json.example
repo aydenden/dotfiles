@@ -1,0 +1,15 @@
+{
+  "env": {
+    "KIS_APP_KEY": "your-key-here",
+    "KIS_APP_SECRET": "your-secret-here",
+    "FRED_API_KEY": "your-key-here",
+    "ECOS_API_KEY": "your-key-here",
+    "KRX_API_KEY": "your-key-here",
+    "DART_API_KEY": "your-key-here",
+    "NAVER_CLIENT_ID": "your-id-here",
+    "NAVER_CLIENT_SECRET": "your-secret-here",
+    "KOREAEXIM_API_KEY": "your-key-here",
+    "DATA_GO_KR_API_KEY": "your-key-here",
+    "ALPHA_VANTAGE_API_KEY": "your-key-here"
+  }
+}
