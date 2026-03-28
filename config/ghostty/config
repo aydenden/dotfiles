@@ -1,7 +1,7 @@
 # Ghostty terminal configuration
 theme = "Solarized Dark - Patched"
-font-family = "D2Coding Nerd Font"
-font-size = 14
+font-family = "MesloLGS NF"
+font-size = 13
 background-opacity = 0.95
 background-blur-radius = 20
 cursor-style = block
