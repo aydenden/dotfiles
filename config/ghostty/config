@@ -1,0 +1,11 @@
+# Ghostty terminal configuration
+theme = "Solarized Dark - Patched"
+font-family = "D2Coding Nerd Font"
+font-size = 14
+background-opacity = 0.95
+background-blur-radius = 20
+cursor-style = block
+cursor-style-blink = true
+macos-option-as-alt = left
+window-decoration = true
+confirm-close-surface = false
