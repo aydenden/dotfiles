@@ -29,12 +29,15 @@ disabled = false
 
 [os.symbols]
 Macos = ""
+Linux = ""
+Windows = "󰍲 "
 
 [directory]
 format = "[ $path ]($style)"
 style = "bg:blue fg:white bold"
 truncation_length = 3
 truncate_to_repo = true
+read_only = " 󰌾"
 
 [directory.substitutions]
 "Documents" = "󰈙"
@@ -81,7 +84,7 @@ symbol = " "
 [deno]
 format = "[ $symbol$version ]($style)"
 style = "bg:yellow fg:black"
-symbol = "🦕"
+symbol = " "
 
 [docker_context]
 format = "[ $symbol$context ]($style)"
@@ -107,3 +110,52 @@ disabled = false
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
+
+# --- Nerd Font Symbols (프리셋) ---
+[aws]
+symbol = " "
+
+[bun]
+symbol = " "
+
+[c]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[git_commit]
+tag_symbol = "  "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[package]
+symbol = "󰏗 "
+
+[php]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
