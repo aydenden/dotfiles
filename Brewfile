@@ -5,7 +5,7 @@
 # --- Shell ---
 brew "zsh"
 brew "sheldon"
-brew "starship"
+brew "oh-my-posh"
 
 # --- 현대적 CLI ---
 brew "ripgrep"
