@@ -4,5 +4,6 @@
 .cache/
 *.local
 *.local.*
+!*.local.example
 .memsearch/
 docs/

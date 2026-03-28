@@ -1,0 +1,5 @@
+# ~/.zshrc.local — 머신별 설정 (gitignore 대상)
+# 이 파일을 ~/.zshrc.local로 복사하여 사용
+#
+# export TELEGRAM_BOT_TOKEN="..."
+# export SOME_API_KEY="..."

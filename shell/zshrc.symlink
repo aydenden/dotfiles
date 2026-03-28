@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+# =============================================================================
+# .zshrc — Dotfiles loader
+# =============================================================================
+
+DOTFILES="$HOME/dotfiles"
+
+# --- 1. PATH (가장 먼저) ---
+source "$DOTFILES/shell/path.zsh"
+
+# --- 2. 나머지 *.zsh 자동 소싱 ---
+for file in "$DOTFILES"/shell/*.zsh; do
+  [[ "$(basename "$file")" == "path.zsh" ]] && continue
+  source "$file"
+done
+
+# --- 3. Sheldon 플러그인 ---
+eval "$(sheldon source)"
+
+# --- 4. Starship 프롬프트 ---
+eval "$(starship init zsh)"
+
+# --- 5. mise 런타임 ---
+eval "$(mise activate zsh)"
+
+# --- 6. Ghostty shell integration ---
+if [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+  source "$GHOSTTY_RESOURCES_DIR/../shell-integration/ghostty-integration.zsh"
+fi
+
+# --- 7. 머신별 로컬 설정 (마지막) ---
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
