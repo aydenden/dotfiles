@@ -140,10 +140,6 @@ config/mise/      → ~/.config/mise
 
 ghostty, cmux, visual-studio-code
 
-### 폰트
-
-font-d2coding, font-d2coding-nerd-font
-
 ## 셸 환경
 
 **Zsh + Sheldon + Starship** 조합.

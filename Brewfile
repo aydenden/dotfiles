@@ -70,7 +70,3 @@ cask "cmux"
 
 # --- Cask: 개발 ---
 cask "visual-studio-code"
-
-# --- 폰트 ---
-cask "font-d2coding"
-cask "font-d2coding-nerd-font"
