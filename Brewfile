@@ -70,3 +70,6 @@ cask "cmux"
 
 # --- Cask: 개발 ---
 cask "visual-studio-code"
+
+# --- 폰트 ---
+cask "font-meslo-for-powerlevel10k"
