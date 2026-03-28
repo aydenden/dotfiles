@@ -120,3 +120,82 @@ script_end() {
     log_success "$name 완료!"
     echo ""
 }
+
+# =============================================================================
+# 컨벤션 기반 자동 심링크
+# =============================================================================
+
+# *.symlink 파일을 ~/.파일명으로 심링크
+link_dotfiles() {
+    log_step "*.symlink 파일 자동 링크"
+    local files=$(find "$DOTFILES_DIR" -maxdepth 2 -name "*.symlink" -not -path "*/.git/*" -not -path "*/.cache/*")
+    for src in $files; do
+        local filename=$(basename "$src" ".symlink")
+        local dest="$HOME/.$filename"
+        link_file "$src" "$dest"
+    done
+}
+
+# config/ 하위를 ~/.config/에 심링크
+link_config() {
+    log_step "config/ → ~/.config/ 링크"
+    local config_dir="$DOTFILES_DIR/config"
+
+    # 디렉토리 링크
+    for dir in "$config_dir"/*/; do
+        [[ -d "$dir" ]] || continue
+        local dirname=$(basename "$dir")
+        local dest="$HOME/.config/$dirname"
+        mkdir -p "$HOME/.config"
+        link_file "$dir" "$dest"
+    done
+
+    # 단독 파일 링크 (starship.toml 등)
+    for file in "$config_dir"/*; do
+        [[ -f "$file" ]] || continue
+        local filename=$(basename "$file")
+        local dest="$HOME/.config/$filename"
+        mkdir -p "$HOME/.config"
+        link_file "$file" "$dest"
+    done
+}
+
+# Claude 설정 처리 (읽기전용=symlink, 런타임수정=복사)
+link_claude() {
+    log_step "Claude Code 설정"
+    local claude_dir="$DOTFILES_DIR/claude"
+    local dest_dir="$HOME/.claude"
+
+    mkdir -p "$dest_dir"
+
+    # 읽기전용 파일 → symlink
+    for file in CLAUDE.md coding-rules.md keybindings.json; do
+        [[ -f "$claude_dir/$file" ]] && link_file "$claude_dir/$file" "$dest_dir/$file"
+    done
+
+    # settings.json.template → 복사 (런타임 수정됨)
+    if [[ -f "$claude_dir/settings.json.template" ]]; then
+        if [[ ! -f "$dest_dir/settings.json" ]]; then
+            cp "$claude_dir/settings.json.template" "$dest_dir/settings.json"
+            log_success "settings.json 생성 (template에서 복사)"
+        else
+            log_info "settings.json 이미 존재 — 건너뜀 (수동 동기화 필요)"
+        fi
+    fi
+
+    # settings.local.json.example → 없으면 복사
+    if [[ -f "$claude_dir/settings.local.json.example" ]] && [[ ! -f "$dest_dir/settings.local.json" ]]; then
+        cp "$claude_dir/settings.local.json.example" "$dest_dir/settings.local.json"
+        log_warn "settings.local.json 생성됨 — API 키를 설정하세요!"
+    fi
+
+    # skills 디렉토리 링크
+    if [[ -d "$claude_dir/skills" ]]; then
+        for skill_dir in "$claude_dir/skills"/*/; do
+            [[ -d "$skill_dir" ]] || continue
+            local skill_name=$(basename "$skill_dir")
+            mkdir -p "$dest_dir/skills"
+            link_file "$skill_dir" "$dest_dir/skills/$skill_name"
+        done
+    fi
+}
