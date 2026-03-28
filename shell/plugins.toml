@@ -1,0 +1,26 @@
+shell = "zsh"
+
+# --- OMZ 라이브러리 (핵심만) ---
+[plugins.oh-my-zsh-lib]
+github = "ohmyzsh/ohmyzsh"
+dir = "lib"
+use = ["completion.zsh", "directories.zsh", "history.zsh", "key-bindings.zsh"]
+
+# --- OMZ 플러그인 ---
+[plugins.oh-my-zsh-git]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/git"
+
+[plugins.oh-my-zsh-docker]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/docker"
+
+# --- 커뮤니티 플러그인 ---
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
