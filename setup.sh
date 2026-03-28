@@ -8,9 +8,9 @@
 #   ./setup.sh              대화형 모드 (설치할 항목 선택)
 #   ./setup.sh --all        전체 설치
 #   ./setup.sh --core       Homebrew + 필수 패키지만
-#   ./setup.sh --shell      Zsh 환경만
-#   ./setup.sh --node       Node.js 환경만
-#   ./setup.sh --docker     Docker(OrbStack) 환경만
+#   ./setup.sh --shell      Zsh + Sheldon + Starship 환경만
+#   ./setup.sh --dev        mise + 런타임 + Docker
+#   ./setup.sh --macos      macOS 시스템 설정
 #   ./setup.sh --symlinks   심링크만 설정
 #   ./setup.sh --help       도움말
 #
@@ -47,9 +47,9 @@ show_help() {
     echo "옵션:"
     echo "  --all        전체 설치"
     echo "  --core       Homebrew + 필수 패키지"
-    echo "  --shell      Zsh + Oh My Zsh + Powerlevel10k"
-    echo "  --node       NVM + Node.js + Yarn"
-    echo "  --docker     OrbStack (Docker 호환)"
+    echo "  --shell      Zsh + Sheldon + Starship"
+    echo "  --dev        mise + 런타임 + Docker"
+    echo "  --macos      macOS 시스템 설정"
     echo "  --symlinks   dotfile 심링크 설정"
     echo "  --help       이 도움말 표시"
     echo ""
@@ -75,12 +75,12 @@ run_shell() {
     run_script "$SCRIPTS_DIR/02-shell.sh"
 }
 
-run_node() {
-    run_script "$SCRIPTS_DIR/03-dev-node.sh"
+run_dev() {
+    run_script "$SCRIPTS_DIR/03-dev.sh"
 }
 
-run_docker() {
-    run_script "$SCRIPTS_DIR/04-dev-docker.sh"
+run_macos() {
+    run_script "$SCRIPTS_DIR/04-macos.sh"
 }
 
 run_symlinks() {
@@ -90,8 +90,8 @@ run_symlinks() {
 run_all() {
     run_core
     run_shell
-    run_node
-    run_docker
+    run_dev
+    run_macos
     run_symlinks
 }
 
@@ -102,10 +102,10 @@ interactive_mode() {
     echo ""
     echo "  1) 전체 설치 (권장)"
     echo "  2) Core (Homebrew + 필수 패키지)"
-    echo "  3) Shell (Zsh + Oh My Zsh + Powerlevel10k)"
-    echo "  4) Node.js (NVM + Node.js + Yarn)"
-    echo "  5) Docker (OrbStack)"
-    echo "  6) Symlinks (dotfile 심링크)"
+    echo "  3) Shell (Zsh + Sheldon + Starship)"
+    echo "  4) Dev (mise + 런타임 + Docker)"
+    echo "  5) macOS (시스템 설정)"
+    echo "  6) Symlinks (설정 파일 심링크)"
     echo "  7) 종료"
     echo ""
 
@@ -115,8 +115,8 @@ interactive_mode() {
         1) run_all ;;
         2) run_core ;;
         3) run_shell ;;
-        4) run_node ;;
-        5) run_docker ;;
+        4) run_dev ;;
+        5) run_macos ;;
         6) run_symlinks ;;
         7)
             echo "종료합니다."
@@ -151,11 +151,11 @@ case "$1" in
     --shell)
         run_shell
         ;;
-    --node)
-        run_node
+    --dev)
+        run_dev
         ;;
-    --docker)
-        run_docker
+    --macos)
+        run_macos
         ;;
     --symlinks)
         run_symlinks
