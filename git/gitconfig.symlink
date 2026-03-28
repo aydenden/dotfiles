@@ -1,0 +1,56 @@
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+    templatedir = ~/.git_template
+    autocrlf = input
+
+[init]
+    defaultBranch = main
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[fetch]
+    prune = true
+
+[rebase]
+    autosquash = true
+
+[branch]
+    sort = -committerdate
+
+[diff]
+    colorMoved = zebra
+
+[merge]
+    ff = only
+
+[commit]
+    template = ~/.gitmessage
+
+[color]
+    ui = auto
+
+[alias]
+    s  = status -s
+    st = status
+    co = checkout
+    ci = commit
+    br = branch
+    d  = diff
+    dc = diff --cached
+    lg = log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(blue)<%an>%Creset %C(green)(%cr)%Creset' --abbrev-commit
+    aa = add --all
+    cm = commit -m
+    ca = commit --amend
+    cp = cherry-pick
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    mainormaster = !git rev-parse --abbrev-ref origin/HEAD | sed 's|^origin/||'
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+[include]
+    path = ~/.gitconfig.local
