@@ -1,0 +1,11 @@
+
+# type(scope): summary (50자 이내, 명령형)
+# |<---- 여기까지 50자 ---->|
+#
+# 본문 (72자 줄바꿈, "왜"를 설명)
+# |<---- 여기까지 72자 ------------>|
+#
+# type: feat, fix, refactor, test, docs, chore, style, perf, ci
+# scope: 변경 영역 (선택)
+#
+# Co-authored-by: Name <email>
