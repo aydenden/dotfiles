@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# 최근 작업한 브랜치 목록 (최대 20개)
+git for-each-ref \
+    --sort=-committerdate \
+    --count=20 \
+    --format='%(color:yellow)%(refname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(subject)' \
+    refs/heads/

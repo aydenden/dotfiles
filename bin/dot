@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# dotfiles 업데이트
+set -e
+
+DOTFILES="$HOME/dotfiles"
+
+echo "dotfiles 업데이트 중..."
+
+# git pull
+git -C "$DOTFILES" pull --rebase
+
+# brew bundle
+if command -v brew &>/dev/null; then
+    echo "Homebrew 패키지 동기화..."
+    brew bundle --file="$DOTFILES/Brewfile"
+fi
+
+# symlinks
+"$DOTFILES/scripts/99-symlinks.sh"
+
+echo "dotfiles 업데이트 완료!"

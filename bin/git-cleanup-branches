@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# 머지된 로컬 브랜치 일괄 삭제 (main/master 제외)
+main_branch=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | sed 's|^origin/||')
+: "${main_branch:=main}"
+
+merged=$(git branch --merged "$main_branch" | grep -vE "^\*|${main_branch}$" | sed 's/^[ ]*//')
+
+if [[ -z "$merged" ]]; then
+    echo "삭제할 브랜치가 없습니다."
+    exit 0
+fi
+
+echo "삭제할 브랜치:"
+echo "$merged"
+echo ""
+read -p "진행하시겠습니까? (y/N) " confirm
+if [[ "$confirm" == [yY] ]]; then
+    echo "$merged" | xargs git branch -d
+    echo "완료!"
+fi

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# .env 파일 커밋 방지
+if git diff --cached --name-only | grep -qE '\.env($|\.)'; then
+    echo "ERROR: .env 파일을 커밋하려고 합니다!"
+    echo "커밋에서 제외하세요: git reset HEAD <file>"
+    exit 1
+fi
