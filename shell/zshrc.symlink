@@ -19,7 +19,7 @@ done
 eval "$(sheldon source)"
 
 # --- 4. oh-my-posh 프롬프트 ---
-eval "$(oh-my-posh init zsh --config /opt/homebrew/opt/oh-my-posh/themes/sim-web.omp.json)"
+eval "$(oh-my-posh init zsh --config $DOTFILES/config/oh-my-posh/sim-web.omp.json)"
 
 # --- 5. mise 런타임 ---
 eval "$(mise activate zsh)"
