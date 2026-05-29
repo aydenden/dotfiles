@@ -7,14 +7,14 @@ Main: Opus only. Sub-agents/teammates: `"model": "sonnet"`. Simple exploration: 
 # Code Principles
 
 ## Design
-- SOLID: Propose splitting when a class has 2+ responsibilities. Invert dependencies via interfaces.
-- Law of Demeter: Max 1 level of chaining. Wrap `a.b().c()` with a delegation method.
-- GoF triggers: 3+ conditional branches → Strategy, complex creation → Factory, state transitions → State.
+- SOLID: single responsibility — propose splitting when responsibilities are mixed. Invert dependencies via interfaces.
+- Law of Demeter: avoid deep chaining; wrap with a delegation method. Fluent APIs / builders / iterator chains are exempt.
+- GoF: consider Strategy when branching proliferates, Factory for complex creation, State for state transitions — don't force on simple match/dict dispatch (YAGNI).
 - Domain: DDD (Evans). Isolate external systems (DB/API/UI) with Port/Adapter.
 - Dependency direction: outer→inner (Clean Architecture). Domain must never import infrastructure.
 
 ## Quality
-KISS·DRY·YAGNI. Intention-revealing naming, functions do one thing only (Clean Code).
+KISS·DRY. Speculative generality is forbidden, but known failure modes, boundary conditions, and necessary extension points / Ports must not be skipped. Intention-revealing naming, functions do one thing only (Clean Code).
 Before modifying, consult Refactoring catalog (Fowler). Code over comments.
 Env/state/logging: 12-Factor App. Stability: consider Circuit Breaker/Bulkhead.
 Testing: TDD + Test Pyramid (unit > integration > E2E).
@@ -23,7 +23,7 @@ Error handling: fail-fast. No empty except/catch. Only catch exceptions at exter
 
 ## Comments
 Docstrings required: module, class, public function — describe role, params, return.
-No inline comments: no `# reason` style. Solve with naming and structure.
+Inline comments only for non-obvious *why* (workarounds, non-trivial rationale) — never restate what code shows. Prefer naming and structure.
 Section dividers allowed: `# --- Section Name ---` only.
 
 # Knowledge Vault
@@ -47,16 +47,14 @@ Format: `type(scope): summary` — type: feat, fix, refactor, test, docs, chore.
 # Tool Selection
 | Goal | Tool |
 |------|------|
-| Code search | `probe search_code` → `extract_code` |
-| Package overview | `repomix pack_codebase --compress` |
-| Short shell commands (git, ls, ruff) | Bash |
-| Script / test / build execution | `batch_execute` |
-| URL fetch | `fetch_and_index` |
-| File analysis (not Edit) | `execute_file` |
-Prefer `probe search_code` over Grep→Read chains.
+| Code search (semantic / many candidates) | `probe search_code` → `extract_code` |
+| Package overview (large handoff) | `repomix pack_codebase --compress` |
+Exact strings → `rg` first. `probe` over Grep→Read for semantic search. Single shell/test/build → `Bash(run_in_background)`. URL fetch → `WebFetch`. Large-output analysis → context-mode hook auto-routes.
+
+# Long-Running Commands
+Commands >2min: use `Bash(run_in_background: true)` once → wait for completion notification. Never re-run because output isn't visible — check `ps aux | grep` first. Before killing duplicates, check progress and preserve the most advanced process.
 
 # Behavior
 Before implementation, list the scope that can be completed.
 Do not start beyond scope. Never fake completion with comments, hardcoding, or stubs.
-Before any file write/overwrite, `cat <absolute-path>` to verify existing content. Never use `cd` — use absolute paths.
 Crystallize repeated patterns: 3+ manual repetitions → extract into skill or script.
