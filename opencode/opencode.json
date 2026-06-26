@@ -1,0 +1,102 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "model": "opencode-go/deepseek-v4-pro",
+  "small_model": "opencode-go/deepseek-v4-flash",
+  "enabled_providers": ["opencode-go", "opencode"],
+  "plugin": ["opencode-beads", "context-mode"],
+  "mcp": {},
+  "permission": {
+    "skill": {
+      "*": "allow"
+    }
+  },
+  "default_agent": "build",
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "model": "opencode-go/deepseek-v4-pro",
+      "temperature": 0.1,
+      "permission": {
+        "task": {
+          "*": "allow"
+        }
+      }
+    },
+    "plan": {
+      "mode": "primary",
+      "model": "opencode-go/deepseek-v4-pro",
+      "temperature": 0.1,
+      "permission": {
+        "edit": "deny",
+        "bash": "ask"
+      }
+    },
+    "builder": {
+      "description": "Implements code changes with the strongest OpenCode Go coding model.",
+      "mode": "subagent",
+      "model": "opencode-go/kimi-k2.6",
+      "temperature": 0.1,
+      "prompt": "You are a pragmatic implementation agent. Make minimal correct changes, preserve unrelated worktree changes, verify with focused tests or lint when feasible, and report exactly what changed.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow"
+      }
+    },
+    "deep-refactor": {
+      "description": "Handles complex refactoring and architecture-heavy implementation work.",
+      "mode": "subagent",
+      "model": "opencode-go/deepseek-v4-pro",
+      "temperature": 0.1,
+      "prompt": "You are a deep refactoring agent. Prefer the smallest behavior-preserving design improvement, respect existing architecture boundaries, and verify changes before reporting completion.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow"
+      }
+    },
+    "fast-worker": {
+      "description": "Performs quick low-cost implementation, cleanup, and repetitive code tasks.",
+      "mode": "subagent",
+      "model": "opencode-go/deepseek-v4-flash",
+      "temperature": 0.1,
+      "prompt": "You are a fast execution agent. Keep scope narrow, avoid broad rewrites, and return concise results with verification status.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow"
+      }
+    },
+    "explorer": {
+      "description": "Explores repositories quickly without modifying files.",
+      "mode": "subagent",
+      "model": "opencode-go/qwen3.6-plus",
+      "temperature": 0.1,
+      "prompt": "You are a read-only codebase exploration agent. Find relevant files, summarize behavior, cite paths, and do not modify files.",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow"
+      }
+    },
+    "reviewer": {
+      "description": "Reviews code for bugs, regressions, missing tests, and maintainability risks.",
+      "mode": "subagent",
+      "model": "opencode-go/glm-5.1",
+      "temperature": 0.1,
+      "prompt": "You are a code reviewer. Prioritize concrete bugs, behavioral regressions, security risks, and missing tests. Do not edit files. Return findings first with file and line references.",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow"
+      }
+    },
+    "budget-builder": {
+      "description": "Handles routine implementation tasks with a cost-efficient OpenCode Go model.",
+      "mode": "subagent",
+      "model": "opencode-go/minimax-m2.5",
+      "temperature": 0.1,
+      "prompt": "You are a routine implementation agent. Keep changes small, follow existing patterns, and report verification results.",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow"
+      }
+    }
+  }
+}

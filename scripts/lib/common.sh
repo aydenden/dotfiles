@@ -199,3 +199,31 @@ link_claude() {
         done
     fi
 }
+
+# OpenCode 설정 처리 (개별 파일 심링크, 런타임 파일은 보존)
+link_opencode() {
+    log_step "OpenCode 설정"
+    local oc_dir="$DOTFILES_DIR/opencode"
+    local dest_dir="$HOME/.config/opencode"
+
+    mkdir -p "$dest_dir"
+
+    # 버전 관리 대상 파일 → symlink
+    for file in opencode.json AGENTS.md tui.json; do
+        [[ -f "$oc_dir/$file" ]] && link_file "$oc_dir/$file" "$dest_dir/$file"
+    done
+
+    # skills 디렉토리 준비
+    mkdir -p "$dest_dir/skills"
+
+    # 외부 스킬 심링크 (소스가 존재하는 경우만)
+    local cua_src="/Applications/CuaDriver.app/Contents/Resources/Skills/cua-driver"
+    if [[ -d "$cua_src" ]] && [[ ! -L "$dest_dir/skills/cua-driver" ]]; then
+        link_file "$cua_src" "$dest_dir/skills/cua-driver"
+    fi
+
+    local wiki_src="$HOME/.hermes/skills/research/llm-wiki"
+    if [[ -d "$wiki_src" ]] && [[ ! -L "$dest_dir/skills/llm-wiki" ]]; then
+        link_file "$wiki_src" "$dest_dir/skills/llm-wiki"
+    fi
+}

@@ -8,3 +8,10 @@
 !*.local.json.example
 .memsearch/
 docs/
+
+# OpenCode 런타임 (안전망)
+opencode/node_modules/
+opencode/package.json
+opencode/package-lock.json
+opencode/.cc-opencode-*
+opencode/*.bak*

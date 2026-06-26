@@ -47,6 +47,11 @@ dotfiles/
 │   ├── settings.json.template  # 복사 (런타임 수정됨)
 │   └── settings.local.json.example
 │
+├── opencode/                 # OpenCode 설정
+│   ├── opencode.json         # symlink → ~/.config/opencode/
+│   ├── AGENTS.md             # symlink → ~/.config/opencode/
+│   └── opencode.json.local.example  # 머신별 설정 예시 (참고용)
+│
 ├── bin/                      # 커스텀 명령어 ($PATH)
 │   ├── dot                   # dotfiles 업데이트
 │   ├── git-cleanup-branches
@@ -208,6 +213,25 @@ Claude Code 설정은 런타임에 자동 수정되므로 특수 처리.
 
 API 키는 `~/.claude/settings.local.json`에 보관 (gitignore).
 
+## OpenCode
+
+OpenCode 설정은 개별 파일 심링크 방식으로 관리. 런타임 파일(`node_modules/`, `package.json`, `.cc-opencode-*` 등)은 `~/.config/opencode/`에 남기고 버전 관리에서 제외.
+
+| 파일 | 방식 | 이유 |
+|------|------|------|
+| `opencode.json` | symlink | 에이전트·MCP·권한 설정 (읽기 전용) |
+| `AGENTS.md` | symlink | 글로벌 지시사항 (읽기 전용) |
+| `opencode.json.local.example` | 참고용 | 머신별 provider/API 키 설정 예시 |
+
+머신별 설정이 필요한 경우:
+
+```bash
+cp opencode/opencode.json.local.example ~/.config/opencode/opencode.local.json
+# 편집 후 export OPENCODE_CONFIG="$HOME/.config/opencode/opencode.local.json"
+```
+
+외부 스킬(CuaDriver, llm-wiki)은 소스가 존재할 때만 자동 링크.
+
 ## 수동 설정
 
 setup.sh 실행 후 수동으로 해야 하는 것:
@@ -215,5 +239,6 @@ setup.sh 실행 후 수동으로 해야 하는 것:
 1. **~/.gitconfig.local 작성** — user.name, user.email 설정
 2. **~/.zshrc.local 작성** — API 토큰 등 민감 정보
 3. **~/.claude/settings.local.json 작성** — Claude 환경변수 (API 키)
-4. **Ghostty** — 앱 실행 후 기본 터미널로 설정
-5. **cmux** — 앱 실행 후 초기 설정
+4. **~/.config/opencode/opencode.local.json 작성** — OpenCode 머신별 provider 설정 (필요시)
+5. **Ghostty** — 앱 실행 후 기본 터미널로 설정
+6. **cmux** — 앱 실행 후 초기 설정

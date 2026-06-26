@@ -18,6 +18,9 @@ link_config
 # Claude 설정 (특수 처리)
 link_claude
 
+# OpenCode 설정 (개별 파일 심링크)
+link_opencode
+
 # git_template 심링크
 if [[ -d "$DOTFILES_DIR/git/git_template" ]]; then
     log_step "Git template"
