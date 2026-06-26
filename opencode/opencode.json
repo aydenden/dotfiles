@@ -10,7 +10,8 @@
   "plugin": [
     "opencode-beads",
     "context-mode",
-    "oh-my-opencode-slim"
+    "oh-my-opencode-slim",
+    "@aydenden/plugin-obsidian-knowledge"
   ],
   "mcp": {},
   "permission": {
