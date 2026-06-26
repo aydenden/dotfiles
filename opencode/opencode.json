@@ -3,8 +3,15 @@
   "autoupdate": false,
   "model": "opencode-go/deepseek-v4-pro",
   "small_model": "opencode-go/deepseek-v4-flash",
-  "enabled_providers": ["opencode-go", "opencode"],
-  "plugin": ["opencode-beads", "context-mode"],
+  "enabled_providers": [
+    "opencode-go",
+    "opencode"
+  ],
+  "plugin": [
+    "opencode-beads",
+    "context-mode",
+    "oh-my-opencode-slim"
+  ],
   "mcp": {},
   "permission": {
     "skill": {
@@ -97,6 +104,13 @@
         "edit": "allow",
         "bash": "allow"
       }
+    },
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
     }
-  }
+  },
+  "lsp": true
 }

@@ -50,6 +50,8 @@ dotfiles/
 ├── opencode/                 # OpenCode 설정
 │   ├── opencode.json         # symlink → ~/.config/opencode/
 │   ├── AGENTS.md             # symlink → ~/.config/opencode/
+│   ├── tui.json              # symlink → TUI 설정
+│   ├── oh-my-opencode-slim.json  # symlink → 플러그인 프리셋
 │   └── opencode.json.local.example  # 머신별 설정 예시 (참고용)
 │
 ├── bin/                      # 커스텀 명령어 ($PATH)
@@ -221,7 +223,24 @@ OpenCode 설정은 개별 파일 심링크 방식으로 관리. 런타임 파일
 |------|------|------|
 | `opencode.json` | symlink | 에이전트·MCP·권한 설정 (읽기 전용) |
 | `AGENTS.md` | symlink | 글로벌 지시사항 (읽기 전용) |
+| `tui.json` | symlink | TUI 설정 (플러그인 배지 포함) |
+| `oh-my-opencode-slim.json` | symlink | oh-my-opencode-slim 플러그인 프리셋 |
 | `opencode.json.local.example` | 참고용 | 머신별 provider/API 키 설정 예시 |
+
+### oh-my-opencode-slim
+
+[oh-my-opencode-slim](https://github.com/alvinunreal/oh-my-opencode-slim) 플러그인으로 백그라운드 멀티 에이전트 오케스트레이션 사용. `opencode-go` 프리셋 활성.
+
+```bash
+# 설치 (opencode-go 프리셋)
+bunx oh-my-opencode-slim@latest install --no-tui --preset=opencode-go --skills=yes --background-subagents=yes
+```
+
+설치 후 심링크 복구 필요 (설치 관리자가 심링크를 일반 파일로 교체함):
+
+```bash
+./setup.sh --symlinks
+```
 
 머신별 설정이 필요한 경우:
 

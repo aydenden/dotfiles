@@ -31,3 +31,10 @@ fi
 
 # --- 7. 머신별 로컬 설정 (마지막) ---
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# opencode
+export PATH=/Users/nyh/.opencode/bin:$PATH
+
+# >>> oh-my-opencode-slim background subagents >>>
+export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
+# <<< oh-my-opencode-slim background subagents <<<

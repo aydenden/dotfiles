@@ -209,7 +209,7 @@ link_opencode() {
     mkdir -p "$dest_dir"
 
     # 버전 관리 대상 파일 → symlink
-    for file in opencode.json AGENTS.md tui.json; do
+    for file in opencode.json AGENTS.md tui.json oh-my-opencode-slim.json; do
         [[ -f "$oc_dir/$file" ]] && link_file "$oc_dir/$file" "$dest_dir/$file"
     done
 
