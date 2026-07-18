@@ -1,74 +1,71 @@
 # dotfiles
 
-macOS 개발 환경 자동화 설정. 토픽 기반 구조로 관리.
+macOS/Windows 개발 환경 자동화 설정. 크로스플랫폼 자산은 `shared/`로 공유하고,
+`Taskfile.yml` 상위 디스패처가 OS를 감지해 분기한다.
 
 ## 빠른 시작
 
+### macOS
+
 ```bash
 xcode-select --install
-
 git clone https://github.com/aydenden/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./setup.sh
+```
+
+### Windows
+
+```powershell
+git clone https://github.com/aydenden/dotfiles.git $HOME\dotfiles
+cd $HOME\dotfiles
+.\setup.ps1
+```
+
+### 이후 운영 (공통)
+
+최초 부트스트랩 후에는 OS 무관 단일 명령으로 통일된다(go-task 필요):
+
+```bash
+task update    # pull + 패키지 + 심링크
+task symlink   # 심링크만
+task packages  # 패키지만
 ```
 
 ## 구조
 
 ```
 dotfiles/
-├── shell/                    # Zsh + Sheldon + Starship
+├── Taskfile.yml              # 상위 디스패처 (OS 자동 분기)
+├── setup.sh                  # macOS 부트스트랩 진입점
+│
+├── shared/                   # OS 무관 자산 (macOS/Windows 공유)
+│   ├── git/                  # gitconfig/gitignore/gitmessage/git_template
+│   ├── config/
+│   │   ├── mise/             # 런타임 버전 관리
+│   │   └── oh-my-posh/       # 프롬프트 테마
+│   ├── claude/               # Claude Code 설정
+│   └── opencode/             # OpenCode 설정
+│
+├── macos/                    # macOS 전용
+│   ├── Brewfile              # Homebrew 패키지 (orca cask 포함)
+│   ├── defaults.sh           # macOS 시스템 설정
+│   ├── config/               # ghostty, cmux (Windows 미지원)
+│   └── scripts/              # 설치 스크립트 (01-core ~ 99-symlinks)
+│       └── lib/common.sh
+│
+├── windows/                  # Windows 전용
+│   ├── setup.ps1             # 부트스트랩 진입점
+│   ├── packages.winget       # winget 매니페스트 (orca 포함)
+│   ├── profile.ps1           # PowerShell $PROFILE 로더
+│   ├── links.ps1             # 심링크 생성
+│   └── README.md             # Windows 매핑 근거 + 실기 검증 안내
+│
+├── shell/                    # Zsh 설정 (mac/linux)
 │   ├── zshrc.symlink         # → ~/.zshrc (로더)
-│   ├── aliases.zsh           # 자동 소싱
-│   ├── exports.zsh
-│   ├── functions.zsh
-│   ├── path.zsh
-│   ├── history.zsh
-│   ├── completion.zsh
-│   └── plugins.toml          # Sheldon 플러그인
-│
-├── git/                      # Git 설정
-│   ├── gitconfig.symlink     # → ~/.gitconfig
-│   ├── gitignore.symlink     # → ~/.gitignore (글로벌)
-│   ├── gitmessage.symlink    # → ~/.gitmessage
-│   └── git_template/         # → ~/.git_template (hooks)
-│
-├── macos/                    # macOS 시스템 설정
-│   └── defaults.sh
-│
-├── config/                   # XDG 설정 → ~/.config/
-│   ├── ghostty/              # 터미널
-│   ├── cmux/                 # cmux 글로벌 커맨드
-│   ├── starship.toml         # 프롬프트 테마
-│   └── mise/                 # 런타임 버전 관리
-│
-├── claude/                   # Claude Code 설정
-│   ├── CLAUDE.md             # symlink
-│   ├── coding-rules.md       # symlink
-│   ├── settings.json.template  # 복사 (런타임 수정됨)
-│   └── settings.local.json.example
-│
-├── opencode/                 # OpenCode 설정
-│   ├── opencode.json         # symlink → ~/.config/opencode/
-│   ├── AGENTS.md             # symlink → ~/.config/opencode/
-│   ├── tui.json              # symlink → TUI 설정
-│   ├── oh-my-opencode-slim.json  # symlink → 플러그인 프리셋
-│   └── opencode.json.local.example  # 머신별 설정 예시 (참고용)
+│   └── *.zsh                 # 자동 소싱 (path/aliases/exports/…)
 │
 ├── bin/                      # 커스텀 명령어 ($PATH)
-│   ├── dot                   # dotfiles 업데이트
-│   ├── git-cleanup-branches
-│   └── git-recent
-│
-├── scripts/                  # 설치 스크립트
-│   ├── lib/common.sh
-│   ├── 01-core.sh            # Homebrew + Brewfile
-│   ├── 02-shell.sh           # Sheldon + Starship
-│   ├── 03-dev.sh             # mise + 런타임
-│   ├── 04-macos.sh           # defaults 적용
-│   └── 99-symlinks.sh        # 심링크 자동 생성
-│
-├── Brewfile
-├── setup.sh                  # 진입점 (대화형/플래그)
 └── .gitignore
 ```
 
@@ -90,12 +87,13 @@ git/gitignore.symlink   → ~/.gitignore
 
 ### `config/` — XDG 설정
 
-`config/` 하위 디렉토리가 `~/.config/`에 심링크.
+`shared/config/`(크로스플랫폼)와 `macos/config/`(macOS 전용)가 `~/.config/`에 심링크.
 
 ```
-config/ghostty/   → ~/.config/ghostty
-config/cmux/      → ~/.config/cmux
-config/mise/      → ~/.config/mise
+shared/config/mise/       → ~/.config/mise
+shared/config/oh-my-posh/ → ~/.config/oh-my-posh
+macos/config/ghostty/     → ~/.config/ghostty
+macos/config/cmux/        → ~/.config/cmux
 ```
 
 ### `.local` — 머신별 설정
@@ -111,22 +109,43 @@ config/mise/      → ~/.config/mise
 
 ## 사용법
 
+### 최초 부트스트랩 (OS별)
+
 ```bash
+# macOS
 ./setup.sh              # 대화형 모드
 ./setup.sh --all        # 전체 설치
 ./setup.sh --help       # 도움말
 ```
 
+```powershell
+# Windows
+.\setup.ps1             # 패키지 + go-task + 심링크 + orca
+```
+
+macOS `setup.sh` 플래그:
+
 | 플래그 | 설명 |
 |--------|------|
-| `--all` | 전체 설치 |
+| `--all` | 전체 설치 (+ go-task) |
 | `--core` | Homebrew + Brewfile |
-| `--shell` | Zsh + Sheldon + Starship |
+| `--shell` | Zsh + Sheldon |
 | `--dev` | mise + 런타임 + Docker |
 | `--macos` | macOS defaults 적용 |
 | `--symlinks` | 심링크 설정 |
 
-업데이트: `dot` 명령으로 pull + brew bundle + symlink 한 번에 실행.
+### 이후 운영 (OS 공통, Taskfile)
+
+부트스트랩으로 `task`가 설치된 뒤에는 OS 무관하게 동일 명령을 쓴다:
+
+| 명령 | 설명 |
+|------|------|
+| `task setup` | 전체 설치 (OS 자동 분기) |
+| `task update` | pull + 패키지 + 심링크 |
+| `task packages` | 패키지 동기화 |
+| `task symlink` | 심링크만 |
+
+(macOS 한정 `dot` 명령도 여전히 pull + brew bundle + symlink 를 수행한다.)
 
 ## 설치 항목
 
@@ -145,7 +164,10 @@ config/mise/      → ~/.config/mise
 
 ### Cask
 
-ghostty, cmux, visual-studio-code
+ghostty, cmux, visual-studio-code, orca
+
+> orca(AI 코딩 에이전트 오케스트레이터)는 macOS `cask "stablyai/orca/orca"`,
+> Windows 는 `setup.ps1` 이 GitHub releases 로 설치. 설치 선언만 관리한다.
 
 ## 셸 환경
 
