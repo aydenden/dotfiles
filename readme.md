@@ -66,7 +66,6 @@ dotfiles/
 ├── shared/                   # OS 무관 자산 (macOS/Windows 공유)
 │   ├── git/                  # gitconfig/gitignore/gitmessage/git_template
 │   ├── config/
-│   │   ├── mise/             # 런타임 버전 관리
 │   │   └── oh-my-posh/       # 프롬프트 테마
 │   ├── claude/               # Claude Code 설정
 │   └── opencode/             # OpenCode 설정
@@ -114,7 +113,6 @@ git/gitignore.symlink   → ~/.gitignore
 `shared/config/`(크로스플랫폼)와 `macos/config/`(macOS 전용)가 `~/.config/`에 심링크.
 
 ```
-shared/config/mise/       → ~/.config/mise
 shared/config/oh-my-posh/ → ~/.config/oh-my-posh
 macos/config/ghostty/     → ~/.config/ghostty
 macos/config/cmux/        → ~/.config/cmux
@@ -154,7 +152,7 @@ macOS `setup.sh` 플래그:
 | `--all` | 전체 설치 (+ go-task) |
 | `--core` | Homebrew + Brewfile |
 | `--shell` | Zsh + Sheldon |
-| `--dev` | mise + 런타임 + Docker |
+| `--dev` | nvm(node) + 런타임 + Docker |
 | `--macos` | macOS defaults 적용 |
 | `--symlinks` | 심링크 설정 |
 
@@ -177,10 +175,10 @@ macOS `setup.sh` 플래그:
 
 | 카테고리 | 패키지 |
 |----------|--------|
-| Shell | zsh, sheldon, starship |
+| Shell | zsh, sheldon, oh-my-posh |
 | 현대적 CLI | ripgrep, fzf, fd, bat, eza, jq, tree, wget, htop |
 | Git | git, lazygit, gitui, git-delta, bfg |
-| 런타임 | mise, deno, bun, go, rustup, uv |
+| 런타임 | nvm, deno, bun, go, rustup, uv |
 | 에디터/LSP | marksman, rust-analyzer, ast-grep |
 | 컨테이너 | docker, docker-compose, colima |
 | AI/ML | ollama, lume |
@@ -195,11 +193,11 @@ ghostty, cmux, visual-studio-code, orca
 
 ## 셸 환경
 
-**Zsh + Sheldon + Starship** 조합.
+**Zsh + Sheldon + oh-my-posh** 조합.
 
 - **Sheldon**: TOML 기반 플러그인 매니저. `shell/plugins.toml`에서 관리.
-- **Starship**: Rust 기반 크로스셸 프롬프트. `config/starship.toml`에서 테마 설정.
-- **mise**: nvm/pyenv/rbenv 통합 대체. `config/mise/config.toml`에서 런타임 버전 선언.
+- **oh-my-posh**: 크로스셸 프롬프트. `shared/config/oh-my-posh/sim-web.omp.json`에서 테마 설정. Nerd Font 는 `oh-my-posh font install meslo` 로 설치(크로스플랫폼).
+- **nvm**: node 버전 관리. python 은 uv, deno 는 brew 로 관리.
 
 zshrc는 로더 역할만 하고, 실제 설정은 `shell/*.zsh` 파일에 분산.
 
