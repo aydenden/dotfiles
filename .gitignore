@@ -8,6 +8,7 @@
 !*.local.json.example
 .memsearch/
 docs/
+.claude/
 
 # OpenCode 런타임 (안전망)
 opencode/node_modules/
