@@ -7,11 +7,14 @@
 $ErrorActionPreference = "Stop"
 $Dotfiles = Split-Path -Parent $PSScriptRoot
 
-# --- 개발자 모드 확인 ---
+# --- 심링크 권한 확인: 관리자이거나 개발자 모드면 생성 가능 ---
+$isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
+    [Security.Principal.WindowsBuiltInRole]::Administrator)
 $devMode = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" `
     -Name AllowDevelopmentWithoutDevLicense -ErrorAction SilentlyContinue
-if (-not $devMode -or $devMode.AllowDevelopmentWithoutDevLicense -ne 1) {
-    Write-Warning "Developer Mode is OFF. Run as Administrator, or enable Settings > For developers > Developer Mode."
+$devModeOn = $devMode -and $devMode.AllowDevelopmentWithoutDevLicense -eq 1
+if (-not $isAdmin -and -not $devModeOn) {
+    Write-Warning "Symlink creation may fail. Run as Administrator, or enable Settings > For developers > Developer Mode."
 }
 
 function Link-File {

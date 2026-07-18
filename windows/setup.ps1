@@ -29,10 +29,18 @@ winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
 
 Write-Host "==> Install orca (not on winget - GitHub releases)"
-if (-not (Get-Command orca -ErrorAction SilentlyContinue)) {
+# orca 는 GUI 앱이라 CLI 를 PATH 에 등록하지 않으므로 Get-Command 로는 판단 불가.
+# 설치 프로그램 목록(Uninstall 레지스트리)에서 존재를 확인한다.
+$orcaInstalled = Get-ItemProperty `
+    "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*", `
+    "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" `
+    -ErrorAction SilentlyContinue | Where-Object { $_.DisplayName -match 'Orca' }
+if (-not $orcaInstalled) {
     $orcaExe = "$env:TEMP\orca-windows-setup.exe"
     Invoke-WebRequest "https://github.com/stablyai/orca/releases/latest/download/orca-windows-setup.exe" -OutFile $orcaExe
     Start-Process -Wait $orcaExe
+} else {
+    Write-Host "orca already installed - skipping"
 }
 
 Write-Host "==> Create symlinks"
