@@ -38,3 +38,9 @@ export PATH=/Users/nyh/.opencode/bin:$PATH
 # >>> oh-my-opencode-slim background subagents >>>
 export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
 # <<< oh-my-opencode-slim background subagents <<<
+
+# >>> opencode-memory auto-initialization >>>
+opencode() {
+  command opencode-memory "$@"
+}
+# <<< opencode-memory auto-initialization <<<
