@@ -19,7 +19,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SCRIPTS_DIR="$SCRIPT_DIR/scripts"
+SCRIPTS_DIR="$SCRIPT_DIR/macos/scripts"
 
 # 색상 정의
 RED='\033[0;31m'

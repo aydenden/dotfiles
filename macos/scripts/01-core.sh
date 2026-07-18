@@ -41,11 +41,11 @@ log_success "업데이트 완료"
 # -----------------------------------------------------------------------------
 log_step "Brewfile 패키지 설치"
 
-if [[ -f "$DOTFILES_DIR/Brewfile" ]]; then
-    brew bundle --file="$DOTFILES_DIR/Brewfile"
+if [[ -f "$DOTFILES_DIR/macos/Brewfile" ]]; then
+    brew bundle --file="$DOTFILES_DIR/macos/Brewfile"
     log_success "Brewfile 패키지 설치 완료"
 else
-    log_warn "Brewfile을 찾을 수 없습니다: $DOTFILES_DIR/Brewfile"
+    log_warn "Brewfile을 찾을 수 없습니다: $DOTFILES_DIR/macos/Brewfile"
 fi
 
 # -----------------------------------------------------------------------------

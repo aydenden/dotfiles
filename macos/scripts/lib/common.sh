@@ -14,7 +14,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # DOTFILES 경로 설정
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 
 # =============================================================================
 # 로깅 함수
@@ -142,7 +142,7 @@ link_config() {
     mkdir -p "$HOME/.config"
 
     # 크로스플랫폼(shared) + macOS 전용(config) 두 소스를 모두 링크
-    for config_dir in "$DOTFILES_DIR/shared/config" "$DOTFILES_DIR/config"; do
+    for config_dir in "$DOTFILES_DIR/shared/config" "$DOTFILES_DIR/macos/config"; do
         [[ -d "$config_dir" ]] || continue
 
         # 디렉토리 링크

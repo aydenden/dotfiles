@@ -23,7 +23,7 @@ fi
 
 # mise 런타임 설치
 log_step "런타임 설치"
-if [[ -f "$DOTFILES_DIR/config/mise/config.toml" ]]; then
+if [[ -f "$DOTFILES_DIR/shared/config/mise/config.toml" ]]; then
     log_info "mise install 실행 중..."
     mise install
     log_success "런타임 설치 완료"

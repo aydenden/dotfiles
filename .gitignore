@@ -18,4 +18,4 @@ shared/opencode/.cc-opencode-*
 shared/opencode/*.bak*
 
 # cmux 런타임 (앱이 launch 시 자동 생성, 런타임 수정됨)
-config/cmux/settings.json
+macos/config/cmux/settings.json
