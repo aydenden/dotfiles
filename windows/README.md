@@ -36,6 +36,12 @@ task packages  # 패키지만
 - macOS 전용: `lume`, `ghostty`(→ Windows Terminal), `cmux`
 - winget 미확인/tap 종속: `bfg`, `marksman`, `ast-grep`, `sccache`, `rtk`, `beads`, `code2prompt`, `agent-browser` — 필요 시 scoop 또는 수동 설치
 
+## orca
+
+orca는 winget 에 등록되어 있지 않다. `setup.ps1` 이 GitHub releases 의
+`orca-windows-setup.exe` 를 내려받아 설치한다(macOS 는 `macos/Brewfile` 의
+`cask "stablyai/orca/orca"` 로 설치). 설치 선언만 관리하며 앱 설정은 관리하지 않는다.
+
 ## ⚠️ 실기 검증 필요
 
 이 디렉토리의 파일은 **macOS에서 구문/JSON 유효성까지만 검증**되었다. 실제 Windows 머신에서 다음을 확인해야 한다:

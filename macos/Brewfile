@@ -71,5 +71,9 @@ cask "cmux"
 # --- Cask: 개발 ---
 cask "visual-studio-code"
 
+# orca — AI 코딩 에이전트 오케스트레이터 (worktree 병렬 실행)
+tap "stablyai/orca"
+cask "stablyai/orca/orca"
+
 # --- 폰트 ---
 cask "font-meslo-for-powerlevel10k"

@@ -21,6 +21,13 @@ if (-not (Get-Command task -ErrorAction SilentlyContinue)) {
     winget install Task.Task --accept-package-agreements --accept-source-agreements
 }
 
+Write-Host "==> orca 설치 (winget 미등록 — GitHub releases)"
+if (-not (Get-Command orca -ErrorAction SilentlyContinue)) {
+    $orcaExe = "$env:TEMP\orca-windows-setup.exe"
+    Invoke-WebRequest "https://github.com/stablyai/orca/releases/latest/download/orca-windows-setup.exe" -OutFile $orcaExe
+    Start-Process -Wait $orcaExe
+}
+
 Write-Host "==> 심링크 생성"
 & "$Dotfiles\windows\links.ps1"
 
