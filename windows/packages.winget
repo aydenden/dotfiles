@@ -4,6 +4,7 @@
   "Sources": [
     {
       "Packages": [
+        { "PackageIdentifier": "Microsoft.PowerShell" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "dandavison.delta" },

@@ -34,8 +34,14 @@ Link-File "$Dotfiles\shared\git\gitconfig.symlink"  "$HOME\.gitconfig"
 Link-File "$Dotfiles\shared\git\gitignore.symlink"  "$HOME\.gitignore"
 Link-File "$Dotfiles\shared\git\gitmessage.symlink" "$HOME\.gitmessage"
 
-# --- PowerShell 프로파일 ---
-Link-File "$Dotfiles\windows\profile.ps1" $PROFILE
+# --- PowerShell 프로파일 (PowerShell 7 우선, 없으면 현재 세션) ---
+# 5.1(WindowsPowerShell)과 7(PowerShell)은 프로파일 경로가 다르므로,
+# pwsh 가 있으면 그 프로파일 경로에 링크한다.
+$psProfile = $PROFILE
+if (Get-Command pwsh -ErrorAction SilentlyContinue) {
+    $psProfile = (pwsh -NoProfile -Command '$PROFILE.CurrentUserCurrentHost')
+}
+Link-File "$Dotfiles\windows\profile.ps1" $psProfile
 
 # --- oh-my-posh / mise (shared 재사용) ---
 Link-File "$Dotfiles\shared\config\oh-my-posh" "$HOME\.config\oh-my-posh"

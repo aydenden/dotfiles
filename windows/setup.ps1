@@ -7,6 +7,9 @@
 $ErrorActionPreference = "Stop"
 $Dotfiles = Split-Path -Parent $PSScriptRoot
 
+Write-Host "==> PowerShell 실행 정책 설정 (CurrentUser RemoteSigned — 프로파일 로딩 허용)"
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+
 Write-Host "==> winget 확인"
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     throw "winget 이 없습니다. Microsoft Store 에서 'App Installer' 를 설치하세요."
