@@ -2,7 +2,7 @@
 # profile.ps1 — PowerShell 프로파일 로더 (shell/zshrc.symlink 대응)
 #
 # links.ps1 이 이 파일을 $PROFILE 에 심링크한다.
-# 크로스플랫폼 도구(oh-my-posh, mise)만 이식하며, zsh 전용(sheldon,
+# 크로스플랫폼 도구(oh-my-posh)만 이식하며, zsh 전용(sheldon,
 # ghostty integration, opencode-memory 래퍼)은 제외한다.
 # =============================================================================
 

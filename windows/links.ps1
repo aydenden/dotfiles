@@ -55,9 +55,8 @@ if (Get-Command pwsh -ErrorAction SilentlyContinue) {
 }
 Link-File "$Dotfiles\windows\profile.ps1" $psProfile
 
-# --- oh-my-posh / mise (shared 재사용) ---
+# --- oh-my-posh (shared 재사용) ---
 Link-File "$Dotfiles\shared\config\oh-my-posh" "$HOME\.config\oh-my-posh"
-Link-File "$Dotfiles\shared\config\mise"       "$HOME\.config\mise"
 
 # --- claude (읽기전용 파일만 링크, settings.json 은 복사본이라 제외) ---
 Link-File "$Dotfiles\shared\claude\CLAUDE.md"       "$HOME\.claude\CLAUDE.md"
