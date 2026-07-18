@@ -1,6 +1,6 @@
 # Ghostty terminal configuration
 theme = "Solarized Dark - Patched"
-font-family = "MesloLGS NF"
+font-family = "MesloLGS Nerd Font"
 font-family = "Apple SD Gothic Neo"
 font-size = 13
 background-opacity = 0.95
