@@ -10,7 +10,9 @@
   "plugin": [
     "opencode-beads",
     "oh-my-opencode-slim",
-    "@aydenden/plugin-obsidian-knowledge"
+    "@aydenden/plugin-obsidian-knowledge",
+    "@aydenden/plugin-memory-guard",
+    "opencode-claude-memory"
   ],
   "mcp": {},
   "permission": {
@@ -104,6 +106,10 @@
         "edit": "allow",
         "bash": "allow"
       }
+    },
+    "fixer": {
+      "model": "opencode-go/deepseek-v4-pro",
+      "temperature": 0.1
     },
     "explore": {
       "disable": true

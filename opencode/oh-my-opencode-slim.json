@@ -97,7 +97,7 @@
         "mcps": []
       },
       "fixer": {
-        "model": "opencode-go/deepseek-v4-flash",
+        "model": "opencode-go/deepseek-v4-pro",
         "variant": "high",
         "skills": [],
         "mcps": []
