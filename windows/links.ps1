@@ -17,6 +17,14 @@ if (-not $devMode -or $devMode.AllowDevelopmentWithoutDevLicense -ne 1) {
 function Link-File {
     param([Parameter(Mandatory)] [string]$Src, [Parameter(Mandatory)] [string]$Dest)
     if (-not (Test-Path $Src)) { Write-Warning "Source not found: $Src"; return }
+
+    # 이미 올바른 심링크면 건너뛴다(멱등 — 재실행 시 백업 누적 방지)
+    $existing = Get-Item $Dest -Force -ErrorAction SilentlyContinue
+    if ($existing -and $existing.LinkType -eq 'SymbolicLink' -and $existing.Target -eq $Src) {
+        Write-Host "Already linked: $Dest"
+        return
+    }
+
     $destDir = Split-Path -Parent $Dest
     if ($destDir -and -not (Test-Path $destDir)) {
         New-Item -ItemType Directory -Force -Path $destDir | Out-Null
