@@ -5,26 +5,50 @@ macOS/Windows 개발 환경 자동화 설정. 크로스플랫폼 자산은 `shar
 
 ## 빠른 시작
 
+clone 에 필요한 최소 도구(git)만 먼저 확보하면, 나머지 의존성(패키지·런타임·
+앱·심링크)은 dotfiles 가 선언적으로 설치한다.
+
+| OS | clone 전 필요 | 확보 방법 |
+|----|-------------|----------|
+| macOS | git | `xcode-select --install` (Xcode CLT 에 포함) |
+| Windows | git, winget | winget 은 Windows 11 기본 내장, git 은 `winget install Git.Git` |
+
 ### macOS
 
 ```bash
+# 1) git 확보 (Xcode Command Line Tools)
 xcode-select --install
+
+# 2) clone
 git clone https://github.com/aydenden/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-./setup.sh
+
+# 3) 초기 셋업 — Homebrew·패키지·런타임·심링크 자동
+./setup.sh --all
 ```
 
 ### Windows
 
+PowerShell 을 **관리자 권한**으로 연다(심링크 생성에 개발자 모드 또는 관리자 필요).
+
 ```powershell
+# 1) git 설치 (winget, 최초 1회) — 설치 후 새 PowerShell 창을 열어 git 인식
+winget install Git.Git --accept-package-agreements --accept-source-agreements
+
+# 2) clone
 git clone https://github.com/aydenden/dotfiles.git $HOME\dotfiles
 cd $HOME\dotfiles
-.\setup.ps1
+
+# 3) 초기 셋업 — 실행정책 우회 부트스트랩. pwsh·task·패키지·orca·심링크 자동
+powershell -ExecutionPolicy Bypass -File .\windows\setup.ps1
 ```
+
+> 설치 후에는 **PowerShell 7(`pwsh`)** 로 새 창을 열어 사용한다(프로파일이 pwsh
+> 경로에 링크됨). 자세한 내용은 [`windows/README.md`](windows/README.md) 참고.
 
 ### 이후 운영 (공통)
 
-최초 부트스트랩 후에는 OS 무관 단일 명령으로 통일된다(go-task 필요):
+최초 부트스트랩으로 `task` 가 설치된 뒤에는 OS 무관 단일 명령으로 통일된다:
 
 ```bash
 task update    # pull + 패키지 + 심링크
