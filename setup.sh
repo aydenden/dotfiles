@@ -8,8 +8,8 @@
 #   ./setup.sh              대화형 모드 (설치할 항목 선택)
 #   ./setup.sh --all        전체 설치
 #   ./setup.sh --core       Homebrew + 필수 패키지만
-#   ./setup.sh --shell      Zsh + Sheldon + Starship 환경만
-#   ./setup.sh --dev        mise + 런타임 + Docker
+#   ./setup.sh --shell      Zsh + Sheldon + oh-my-posh 환경만
+#   ./setup.sh --dev        nvm + 런타임 + Docker
 #   ./setup.sh --macos      macOS 시스템 설정
 #   ./setup.sh --symlinks   심링크만 설정
 #   ./setup.sh --help       도움말
@@ -47,8 +47,8 @@ show_help() {
     echo "옵션:"
     echo "  --all        전체 설치"
     echo "  --core       Homebrew + 필수 패키지"
-    echo "  --shell      Zsh + Sheldon + Starship"
-    echo "  --dev        mise + 런타임 + Docker"
+    echo "  --shell      Zsh + Sheldon + oh-my-posh"
+    echo "  --dev        nvm + 런타임 + Docker"
     echo "  --macos      macOS 시스템 설정"
     echo "  --symlinks   dotfile 심링크 설정"
     echo "  --help       이 도움말 표시"
@@ -102,8 +102,8 @@ interactive_mode() {
     echo ""
     echo "  1) 전체 설치 (권장)"
     echo "  2) Core (Homebrew + 필수 패키지)"
-    echo "  3) Shell (Zsh + Sheldon + Starship)"
-    echo "  4) Dev (mise + 런타임 + Docker)"
+    echo "  3) Shell (Zsh + Sheldon + oh-my-posh)"
+    echo "  4) Dev (nvm + 런타임 + Docker)"
     echo "  5) macOS (시스템 설정)"
     echo "  6) Symlinks (설정 파일 심링크)"
     echo "  7) 종료"
