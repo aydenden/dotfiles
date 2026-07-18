@@ -4,6 +4,11 @@ Respond in Korean.
 # Agent Models
 Main: Opus. Sub-agents/teammates: sonnet. Simple exploration: haiku.
 
+## No fan-out by default (solo user — token/block budget)
+- Default = do NOT fan out. Multi-subagent parallel/pipeline, many-agent fan-out, and mass-spawn workflows (deep-research, Workflow) run ONLY on explicit user request.
+- Escalation cap: main direct → if insufficient, ONE single subagent. Stop there.
+- If fan-out seems genuinely needed (broad coverage, independent verification, scale), do NOT run it — first state the expected agent count and rough token cost, then get approval. Fan-out is N×bootstrap and drains block usage fast.
+
 # Code Principles
 
 ## Design
