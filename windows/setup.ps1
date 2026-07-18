@@ -38,8 +38,11 @@ if (-not (Get-Command orca -ErrorAction SilentlyContinue)) {
 Write-Host "==> Create symlinks"
 & "$Dotfiles\windows\links.ps1"
 
-Write-Host "==> Set git autocrlf (Windows)"
-git config --global core.autocrlf true
+# --global 은 심링크된 ~/.gitconfig(=shared/git/gitconfig.symlink)를 직접 수정하므로
+# 절대 쓰지 않는다. 대신 심링크가 아닌 로컬 오버라이드 파일에 기록한다
+# (gitconfig.symlink 의 [include] path=~/.gitconfig.local 이 이를 우선 적용).
+Write-Host "==> Set git autocrlf in ~/.gitconfig.local (Windows)"
+git config --file "$HOME\.gitconfig.local" core.autocrlf true
 
 Write-Host ""
 Write-Host "Done. Open a new PowerShell 7 (pwsh) session. Use 'task update' for ongoing operations."
