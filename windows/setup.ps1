@@ -28,6 +28,13 @@ Write-Host "==> Install packages (pwsh, task, ... from packages.winget)"
 winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
 
+Write-Host "==> Install Nerd Font via oh-my-posh (cross-platform)"
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+    oh-my-posh font install meslo
+} else {
+    Write-Warning "oh-my-posh not on PATH yet. In a new session run: oh-my-posh font install meslo"
+}
+
 Write-Host "==> Install orca (not on winget - GitHub releases)"
 # orca 는 GUI 앱이라 CLI 를 PATH 에 등록하지 않으므로 Get-Command 로는 판단 불가.
 # 설치 프로그램 목록(Uninstall 레지스트리)에서 존재를 확인한다.

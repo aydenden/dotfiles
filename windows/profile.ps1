@@ -13,10 +13,9 @@ if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
     oh-my-posh init pwsh --config "$Dotfiles\shared\config\oh-my-posh\sim-web.omp.json" | Invoke-Expression
 }
 
-# --- mise 런타임 ---
-if (Get-Command mise -ErrorAction SilentlyContinue) {
-    mise activate pwsh | Out-String | Invoke-Expression
-}
+# --- node ---
+# node 는 nvm-windows(CoreyButler.NVMforWindows)로 관리한다. nvm-windows 는
+# PATH 기반이라 프로파일 로드가 필요 없다('nvm use <ver>' 가 PATH 를 전환).
 
 # --- 머신별 로컬 설정 (마지막) ---
 $LocalProfile = "$HOME\.config\powershell\profile.local.ps1"
