@@ -11,11 +11,11 @@ docs/
 .claude/
 
 # OpenCode 런타임 (안전망)
-opencode/node_modules/
-opencode/package.json
-opencode/package-lock.json
-opencode/.cc-opencode-*
-opencode/*.bak*
+shared/opencode/node_modules/
+shared/opencode/package.json
+shared/opencode/package-lock.json
+shared/opencode/.cc-opencode-*
+shared/opencode/*.bak*
 
 # cmux 런타임 (앱이 launch 시 자동 생성, 런타임 수정됨)
 config/cmux/settings.json

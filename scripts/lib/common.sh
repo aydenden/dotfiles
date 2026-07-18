@@ -162,7 +162,7 @@ link_config() {
 # Claude 설정 처리 (읽기전용=symlink, 런타임수정=복사)
 link_claude() {
     log_step "Claude Code 설정"
-    local claude_dir="$DOTFILES_DIR/claude"
+    local claude_dir="$DOTFILES_DIR/shared/claude"
     local dest_dir="$HOME/.claude"
 
     mkdir -p "$dest_dir"
@@ -202,7 +202,7 @@ link_claude() {
 # OpenCode 설정 처리 (개별 파일 심링크, 런타임 파일은 보존)
 link_opencode() {
     log_step "OpenCode 설정"
-    local oc_dir="$DOTFILES_DIR/opencode"
+    local oc_dir="$DOTFILES_DIR/shared/opencode"
     local dest_dir="$HOME/.config/opencode"
 
     mkdir -p "$dest_dir"
