@@ -28,6 +28,9 @@ Write-Host "==> Install packages (pwsh, task, ... from packages.winget)"
 winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
 
+Write-Host "==> Install Raycast (Microsoft Store app - name search, not in community winget)"
+winget install raycast --accept-package-agreements --accept-source-agreements
+
 Write-Host "==> Install Nerd Font via oh-my-posh (cross-platform)"
 if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
     oh-my-posh font install meslo

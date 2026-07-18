@@ -28,7 +28,6 @@
         { "PackageIdentifier": "Ollama.Ollama" },
         { "PackageIdentifier": "Gyan.FFmpeg" },
         { "PackageIdentifier": "Microsoft.VisualStudioCode" },
-        { "PackageIdentifier": "Raycast.Raycast" },
         { "PackageIdentifier": "Microsoft.WindowsTerminal" }
       ],
       "SourceDetails": {
