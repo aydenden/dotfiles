@@ -139,24 +139,23 @@ link_dotfiles() {
 # config/ 하위를 ~/.config/에 심링크
 link_config() {
     log_step "config/ → ~/.config/ 링크"
-    local config_dir="$DOTFILES_DIR/config"
+    mkdir -p "$HOME/.config"
 
-    # 디렉토리 링크
-    for dir in "$config_dir"/*/; do
-        [[ -d "$dir" ]] || continue
-        local dirname=$(basename "$dir")
-        local dest="$HOME/.config/$dirname"
-        mkdir -p "$HOME/.config"
-        link_file "$dir" "$dest"
-    done
+    # 크로스플랫폼(shared) + macOS 전용(config) 두 소스를 모두 링크
+    for config_dir in "$DOTFILES_DIR/shared/config" "$DOTFILES_DIR/config"; do
+        [[ -d "$config_dir" ]] || continue
 
-    # 단독 파일 링크 (starship.toml 등)
-    for file in "$config_dir"/*; do
-        [[ -f "$file" ]] || continue
-        local filename=$(basename "$file")
-        local dest="$HOME/.config/$filename"
-        mkdir -p "$HOME/.config"
-        link_file "$file" "$dest"
+        # 디렉토리 링크
+        for dir in "$config_dir"/*/; do
+            [[ -d "$dir" ]] || continue
+            link_file "$dir" "$HOME/.config/$(basename "$dir")"
+        done
+
+        # 단독 파일 링크
+        for file in "$config_dir"/*; do
+            [[ -f "$file" ]] || continue
+            link_file "$file" "$HOME/.config/$(basename "$file")"
+        done
     done
 }
 
