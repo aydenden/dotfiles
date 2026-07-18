@@ -23,6 +23,7 @@ brew "fswatch"
 
 # --- Git ---
 brew "git"
+brew "git-lfs"
 brew "git-delta"
 brew "lazygit"
 brew "gitui"
@@ -34,7 +35,7 @@ brew "rust-analyzer"
 brew "ast-grep"
 
 # --- 런타임 & 빌드 ---
-brew "mise"
+brew "nvm"
 brew "deno"
 brew "oven-sh/bun/bun"
 brew "go"
@@ -75,6 +76,3 @@ cask "visual-studio-code"
 # orca — AI 코딩 에이전트 오케스트레이터 (worktree 병렬 실행)
 tap "stablyai/orca"
 cask "stablyai/orca/orca"
-
-# --- 폰트 ---
-cask "font-meslo-for-powerlevel10k"

@@ -1,4 +1,0 @@
-[tools]
-node = "lts"
-python = "latest"
-deno = "latest"

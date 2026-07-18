@@ -21,8 +21,10 @@ eval "$(sheldon source)"
 # --- 4. oh-my-posh 프롬프트 ---
 eval "$(oh-my-posh init zsh --config $DOTFILES/shared/config/oh-my-posh/sim-web.omp.json)"
 
-# --- 5. mise 런타임 ---
-eval "$(mise activate zsh)"
+# --- 5. nvm (node 버전 관리) ---
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # --- 6. Ghostty shell integration ---
 if [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then

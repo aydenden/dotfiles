@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # =============================================================================
-# 02-shell.sh - Zsh + Sheldon + Starship 설정
+# 02-shell.sh - Zsh + Sheldon + oh-my-posh(폰트) 설정
 # =============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/lib/common.sh"
 
-script_start "Shell Setup (Zsh + Sheldon + Starship)"
+script_start "Shell Setup (Zsh + Sheldon + oh-my-posh)"
 
 require_brew
 
@@ -51,14 +51,13 @@ if [[ -f "$DOTFILES_DIR/shell/plugins.toml" ]]; then
     link_file "$DOTFILES_DIR/shell/plugins.toml" "$SHELDON_DIR/plugins.toml"
 fi
 
-# --- Starship ---
-log_step "Starship 확인"
-if is_installed starship; then
-    log_success "Starship이 이미 설치되어 있습니다"
+# --- Nerd Font (oh-my-posh 로 설치 — 크로스플랫폼 단일 방법) ---
+log_step "Nerd Font 설치"
+if is_installed oh-my-posh; then
+    oh-my-posh font install meslo
+    log_success "Meslo Nerd Font 설치 완료"
 else
-    log_info "Starship 설치 중..."
-    brew install starship
-    log_success "Starship 설치 완료"
+    log_warn "oh-my-posh 미설치 — 폰트 설치를 건너뜁니다"
 fi
 
 script_end "Shell Setup"
