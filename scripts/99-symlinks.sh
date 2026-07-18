@@ -22,9 +22,9 @@ link_claude
 link_opencode
 
 # git_template 심링크
-if [[ -d "$DOTFILES_DIR/git/git_template" ]]; then
+if [[ -d "$DOTFILES_DIR/shared/git/git_template" ]]; then
     log_step "Git template"
-    link_file "$DOTFILES_DIR/git/git_template" "$HOME/.git_template"
+    link_file "$DOTFILES_DIR/shared/git/git_template" "$HOME/.git_template"
 fi
 
 script_end "Symlinks Setup"

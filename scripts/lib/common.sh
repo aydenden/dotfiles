@@ -128,7 +128,7 @@ script_end() {
 # *.symlink 파일을 ~/.파일명으로 심링크
 link_dotfiles() {
     log_step "*.symlink 파일 자동 링크"
-    local files=$(find "$DOTFILES_DIR" -maxdepth 2 -name "*.symlink" -not -path "*/.git/*" -not -path "*/.cache/*")
+    local files=$(find "$DOTFILES_DIR" -maxdepth 3 -name "*.symlink" -not -path "*/.git/*" -not -path "*/.cache/*")
     for src in $files; do
         local filename=$(basename "$src" ".symlink")
         local dest="$HOME/.$filename"
