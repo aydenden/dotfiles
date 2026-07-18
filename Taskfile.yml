@@ -1,0 +1,40 @@
+version: '3'
+
+# =============================================================================
+# Taskfile — 상위 디스패처 (OS 자동 분기)
+#
+# 최초 부트스트랩은 OS별 껍데기로 실행:
+#   macOS/Linux : ./setup.sh --all
+#   Windows     : .\setup.ps1
+# 이후 모든 운영은 OS 무관 단일 명령으로 통일:
+#   task setup | task update | task symlink | task packages
+# =============================================================================
+
+tasks:
+  default:
+    desc: 사용 가능한 태스크 목록
+    cmds:
+      - task --list
+    silent: true
+
+  setup:
+    desc: 전체 설치 (OS 자동 분기)
+    cmds:
+      - '{{if eq OS "windows"}}powershell -ExecutionPolicy Bypass -File windows/setup.ps1{{else}}bash setup.sh --all{{end}}'
+
+  update:
+    desc: pull + 패키지 동기화 + 심링크
+    cmds:
+      - git pull --ff-only
+      - task: packages
+      - task: symlink
+
+  packages:
+    desc: 패키지 설치/동기화
+    cmds:
+      - '{{if eq OS "windows"}}winget import -i windows/packages.winget --accept-package-agreements --accept-source-agreements{{else}}brew bundle --file macos/Brewfile{{end}}'
+
+  symlink:
+    desc: 설정 파일 심링크
+    cmds:
+      - '{{if eq OS "windows"}}powershell -ExecutionPolicy Bypass -File windows/links.ps1{{else}}bash macos/scripts/99-symlinks.sh{{end}}'
