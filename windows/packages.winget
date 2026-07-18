@@ -1,0 +1,40 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2026-07-18",
+  "Sources": [
+    {
+      "Packages": [
+        { "PackageIdentifier": "Git.Git" },
+        { "PackageIdentifier": "GitHub.cli" },
+        { "PackageIdentifier": "dandavison.delta" },
+        { "PackageIdentifier": "JesseDuffield.lazygit" },
+        { "PackageIdentifier": "BurntSushi.ripgrep.MSVC" },
+        { "PackageIdentifier": "sharkdp.fd" },
+        { "PackageIdentifier": "sharkdp.bat" },
+        { "PackageIdentifier": "eza-community.eza" },
+        { "PackageIdentifier": "junegunn.fzf" },
+        { "PackageIdentifier": "jqlang.jq" },
+        { "PackageIdentifier": "JanDeDobbeleer.OhMyPosh" },
+        { "PackageIdentifier": "jdx.mise" },
+        { "PackageIdentifier": "DenoLand.Deno" },
+        { "PackageIdentifier": "Oven-sh.Bun" },
+        { "PackageIdentifier": "GoLang.Go" },
+        { "PackageIdentifier": "Rustlang.Rustup" },
+        { "PackageIdentifier": "astral-sh.uv" },
+        { "PackageIdentifier": "Kitware.CMake" },
+        { "PackageIdentifier": "Docker.DockerDesktop" },
+        { "PackageIdentifier": "Ollama.Ollama" },
+        { "PackageIdentifier": "Gyan.FFmpeg" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
+        { "PackageIdentifier": "Microsoft.WindowsTerminal" }
+      ],
+      "SourceDetails": {
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name": "winget",
+        "Type": "Microsoft.PreIndexed.Package"
+      }
+    }
+  ],
+  "WinGetVersion": "1.7.0"
+}
