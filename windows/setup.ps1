@@ -28,8 +28,16 @@ Write-Host "==> Install packages (pwsh, task, ... from packages.winget)"
 winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
 
-Write-Host "==> Install Raycast (Microsoft Store app - name search, not in community winget)"
-winget install raycast --accept-package-agreements --accept-source-agreements
+Write-Host "==> Install Raycast (Microsoft Store app; not in community winget)"
+# msstore 소스는 환경에 따라 인증서 피닝 오류(0x8a15005e)가 날 수 있으므로
+# 실패해도 부트스트랩을 막지 않고 안내만 한다. 보안 설정(피닝)은 자동으로 끄지 않는다.
+winget install --id 9pfxxshc64h3 --source msstore --exact `
+    --accept-package-agreements --accept-source-agreements
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "Raycast install failed. On msstore cert error (0x8a15005e), run as admin:"
+    Write-Warning "  winget settings --enable BypassCertificatePinningForMicrosoftStore"
+    Write-Warning "then retry: winget install --id 9pfxxshc64h3 --source msstore"
+}
 
 Write-Host "==> Install Nerd Font via oh-my-posh (cross-platform)"
 if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
