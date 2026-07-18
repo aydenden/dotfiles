@@ -29,14 +29,24 @@ winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
 
 Write-Host "==> Install Raycast (Microsoft Store app; not in community winget)"
-# msstore 소스는 환경에 따라 인증서 피닝 오류(0x8a15005e)가 날 수 있으므로
-# 실패해도 부트스트랩을 막지 않고 안내만 한다. 보안 설정(피닝)은 자동으로 끄지 않는다.
-winget install --id 9pfxxshc64h3 --source msstore --exact `
-    --accept-package-agreements --accept-source-agreements
+# msstore 는 환경에 따라 인증서 피닝 오류(0x8a15005e)가 날 수 있다. 첫 시도가
+# 실패할 때만 조건부로 피닝을 우회하고 재시도한다(무조건 끄지 않는다).
+$raycastId = "9pfxxshc64h3"
+function Install-Raycast {
+    winget install --id $raycastId --source msstore --exact `
+        --accept-package-agreements --accept-source-agreements
+    return $LASTEXITCODE
+}
+Install-Raycast | Out-Null
 if ($LASTEXITCODE -ne 0) {
-    Write-Warning "Raycast install failed. On msstore cert error (0x8a15005e), run as admin:"
-    Write-Warning "  winget settings --enable BypassCertificatePinningForMicrosoftStore"
-    Write-Warning "then retry: winget install --id 9pfxxshc64h3 --source msstore"
+    Write-Warning "msstore 설치 실패(인증서 피닝 0x8a15005e 추정). 피닝 우회 후 재시도..."
+    winget settings --enable BypassCertificatePinningForMicrosoftStore
+    winget source reset --force 2>$null
+    Install-Raycast | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Warning "Raycast 설치가 여전히 실패합니다. 재부팅 후 setup.ps1 을 다시 실행하거나,"
+        Write-Warning "Microsoft Store 에서 수동 설치하세요(선택 항목이므로 부트스트랩은 계속됩니다)."
+    }
 }
 
 Write-Host "==> Install Nerd Font via oh-my-posh (cross-platform)"
