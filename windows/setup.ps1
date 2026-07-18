@@ -1,7 +1,7 @@
 # =============================================================================
 # setup.ps1 — Windows 부트스트랩 (최초 실행 진입점)
 #
-# 하는 일: 패키지 설치 → go-task 확보 → 심링크 → git 설정.
+# 하는 일: 패키지 설치(pwsh·task 등 packages.winget 전체) → orca → 심링크 → git.
 # 이후 모든 운영은 'task update' 등 OS 무관 명령으로 통일된다.
 # =============================================================================
 $ErrorActionPreference = "Stop"
@@ -15,14 +15,9 @@ if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
     throw "winget 이 없습니다. Microsoft Store 에서 'App Installer' 를 설치하세요."
 }
 
-Write-Host "==> 패키지 설치"
+Write-Host "==> 패키지 설치 (pwsh·task 포함, packages.winget 선언 전체)"
 winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
-
-Write-Host "==> go-task 설치 (이후 운영은 'task' 로 통일)"
-if (-not (Get-Command task -ErrorAction SilentlyContinue)) {
-    winget install Task.Task --accept-package-agreements --accept-source-agreements
-}
 
 Write-Host "==> orca 설치 (winget 미등록 — GitHub releases)"
 if (-not (Get-Command orca -ErrorAction SilentlyContinue)) {

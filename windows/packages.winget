@@ -5,6 +5,7 @@
     {
       "Packages": [
         { "PackageIdentifier": "Microsoft.PowerShell" },
+        { "PackageIdentifier": "Task.Task" },
         { "PackageIdentifier": "Git.Git" },
         { "PackageIdentifier": "GitHub.cli" },
         { "PackageIdentifier": "dandavison.delta" },

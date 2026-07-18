@@ -87,20 +87,12 @@ run_symlinks() {
     run_script "$SCRIPTS_DIR/99-symlinks.sh"
 }
 
-ensure_task() {
-    if ! command -v task &>/dev/null; then
-        echo -e "${BLUE}[INFO]${NC} go-task 설치 중 (이후 운영은 'task' 로 통일)..."
-        brew install go-task
-    fi
-}
-
 run_all() {
     run_core
     run_shell
     run_dev
     run_macos
     run_symlinks
-    ensure_task
 }
 
 interactive_mode() {
