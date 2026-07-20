@@ -41,7 +41,26 @@ task packages  # 패키지만
 - 셸: `zsh`, `sheldon` — Windows는 PowerShell + `profile.ps1` 사용
 - Unix 전용: `tmux`, `zellij`, `htop`, `fswatch`, `supervisor`, `colima`, `container`, `libpq`
 - macOS 전용: `lume`, `ghostty`(→ Windows Terminal), `cmux`
-- winget 미확인/tap 종속: `bfg`, `marksman`, `ast-grep`, `sccache`, `rtk`, `beads`, `code2prompt`, `agent-browser` — 필요 시 scoop 또는 수동 설치
+- winget 미확인/tap 종속: `bfg`, `marksman`, `ast-grep`, `sccache`, `code2prompt` — 필요 시 scoop 또는 수동 설치
+
+> `rtk`(`rtk-ai.rtk`), `beads`(`GasTownHall.Beads`)는 winget 정식 등록을 확인해
+> `packages.winget` 에 포함했다. `agent-browser` 는 winget 패키지가 없어 아래
+> 별도 섹션에서 npm 글로벌로 설치한다.
+>
+> `beads` 는 dolt 백엔드가 필요하다. macOS 는 `brew "beads"` 가 dolt 를 의존성으로
+> 자동 설치하지만, winget beads 는 포터블 zip 이라 의존성을 안 챙긴다 — 그래서
+> `DoltHub.Dolt` 를 `packages.winget` 에 별도로 명시했다.
+
+## agent-browser
+
+agent-browser(`vercel-labs/agent-browser`)는 winget/scoop 패키지가 없다. 공식
+권장 방식인 npm 글로벌 설치로 네이티브 Rust 바이너리를 받는다 — `setup.ps1` 이
+`npm install -g agent-browser` 를 실행한다. node/npm 은 `packages.winget` 의
+`NVMforWindows`(nvm 매니저)만으로는 부족해, `setup.ps1` 이 `nvm install lts` 로
+본체를 선설치하고 레지스트리 PATH 를 현재 세션에 재로드한 뒤 npm 을 호출한다.
+macOS 는 `macos/Brewfile` 의 `brew "agent-browser"`
+(homebrew-core). Chrome for Testing 은 최초 1회 `agent-browser install` 로 별도
+다운로드한다(플랫폼 공통).
 
 ## orca
 

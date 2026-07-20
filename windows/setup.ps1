@@ -28,6 +28,31 @@ Write-Host "==> Install packages (pwsh, task, ... from packages.winget)"
 winget import -i "$Dotfiles\windows\packages.winget" `
     --accept-package-agreements --accept-source-agreements
 
+# 설치 프로그램이 레지스트리에 쓴 PATH/환경변수를 현재 세션에 다시 로드한다.
+# PowerShell 프로세스는 시작 시점의 환경을 복사해 들고 있어, winget 이 방금 바꾼
+# 값을 새 세션 없이는 못 본다(bash 의 'source' 에 해당하는 재로드).
+function Sync-Environment {
+    foreach ($v in 'NVM_HOME', 'NVM_SYMLINK') {
+        $val = [Environment]::GetEnvironmentVariable($v, 'User')
+        if (-not $val) { $val = [Environment]::GetEnvironmentVariable($v, 'Machine') }
+        if ($val) { Set-Item -Path "env:$v" -Value $val }
+    }
+    $env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' +
+                [Environment]::GetEnvironmentVariable('Path', 'User')
+}
+
+Write-Host "==> Install node LTS via nvm (winget installs the nvm manager only)"
+# NVMforWindows 는 nvm.exe 만 깔고 node/npm 본체는 'nvm install' 이 설치한다
+# (macOS 03-dev.sh 의 'nvm install --lts' 와 동일 역할).
+Sync-Environment
+if (Get-Command nvm -ErrorAction SilentlyContinue) {
+    nvm install lts
+    nvm use lts
+    Sync-Environment   # nvm use 가 활성화한 node 심링크 경로를 현재 세션에 반영
+} else {
+    Write-Warning "nvm not on PATH yet. In a new session run: nvm install lts; nvm use lts"
+}
+
 Write-Host "==> Install Raycast (Microsoft Store app; not in community winget)"
 # msstore 는 환경에 따라 인증서 피닝 오류(0x8a15005e)가 날 수 있다. 첫 시도가
 # 실패할 때만 조건부로 피닝을 우회하고 재시도한다(무조건 끄지 않는다).
@@ -69,6 +94,17 @@ if (-not $orcaInstalled) {
     Start-Process -Wait $orcaExe
 } else {
     Write-Host "orca already installed - skipping"
+}
+
+Write-Host "==> Install agent-browser (not on winget - npm global)"
+# agent-browser 는 winget/scoop 패키지가 없다. 공식 권장 방식인 npm 글로벌 설치로
+# 네이티브 Rust 바이너리를 받는다(node 는 위 'nvm install lts' 단계에서 선설치됨).
+# Chrome for Testing 은 최초 1회 'agent-browser install' 로 별도 다운로드한다.
+if (Get-Command npm -ErrorAction SilentlyContinue) {
+    npm install -g agent-browser
+    Write-Host "agent-browser installed. Run once to fetch Chrome: agent-browser install"
+} else {
+    Write-Warning "npm not on PATH yet. In a new session run: npm install -g agent-browser; agent-browser install"
 }
 
 Write-Host "==> Create symlinks"
