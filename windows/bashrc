@@ -1,0 +1,13 @@
+# =============================================================================
+# bashrc — Git Bash 설정 (shell/zshrc.symlink 의 Windows 대응)
+#
+# links.ps1 이 ~/.bashrc 로 심링크하거나, 심링크 권한이 없으면
+# ~/.bashrc 스텁이 이 파일을 source 한다.
+# =============================================================================
+
+DOTFILES="$HOME/dotfiles"
+
+# --- oh-my-posh 프롬프트 (테마는 shared/ 재사용) ---
+if command -v oh-my-posh >/dev/null 2>&1; then
+    eval "$(oh-my-posh init bash --config "$DOTFILES/shared/config/oh-my-posh/sim-web.omp.json")"
+fi

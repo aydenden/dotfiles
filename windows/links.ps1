@@ -58,6 +58,10 @@ Link-File "$Dotfiles\windows\profile.ps1" $psProfile
 # --- oh-my-posh (shared 재사용) ---
 Link-File "$Dotfiles\shared\config\oh-my-posh" "$HOME\.config\oh-my-posh"
 
+# --- git bash (Windows 전용: 프롬프트 + mintty 폰트) ---
+Link-File "$Dotfiles\windows\bashrc"   "$HOME\.bashrc"
+Link-File "$Dotfiles\windows\minttyrc" "$HOME\.minttyrc"
+
 # --- claude (읽기전용 파일만 링크, settings.json 은 복사본이라 제외) ---
 Link-File "$Dotfiles\shared\claude\CLAUDE.md"       "$HOME\.claude\CLAUDE.md"
 Link-File "$Dotfiles\shared\claude\coding-rules.md" "$HOME\.claude\coding-rules.md"
