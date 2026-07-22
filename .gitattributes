@@ -1,0 +1,9 @@
+# 셸 스크립트는 Windows(autocrlf=true)에서도 LF 를 유지해야 한다
+# (CRLF 로 체크아웃되면 bash 가 '\r' 을 명령 일부로 해석해 깨진다)
+*.sh    text eol=lf
+bashrc  text eol=lf
+*.zsh   text eol=lf
+*.symlink text eol=lf
+
+# PowerShell 은 CRLF 가 관례
+*.ps1   text eol=crlf
