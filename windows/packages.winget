@@ -24,14 +24,10 @@
         { "PackageIdentifier": "Rustlang.Rustup" },
         { "PackageIdentifier": "astral-sh.uv" },
         { "PackageIdentifier": "Kitware.CMake" },
-        { "PackageIdentifier": "Docker.DockerDesktop" },
-        { "PackageIdentifier": "Ollama.Ollama" },
-        { "PackageIdentifier": "Gyan.FFmpeg" },
         { "PackageIdentifier": "rtk-ai.rtk" },
         { "PackageIdentifier": "GasTownHall.Beads" },
         { "PackageIdentifier": "DoltHub.Dolt" },
-        { "PackageIdentifier": "Microsoft.VisualStudioCode" },
-        { "PackageIdentifier": "Microsoft.WindowsTerminal" }
+        { "PackageIdentifier": "Microsoft.VisualStudioCode" }
       ],
       "SourceDetails": {
         "Argument": "https://cdn.winget.microsoft.com/cache",
